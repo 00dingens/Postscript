@@ -1,0 +1,174 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595 842
+%%Title: Graphs by Rafael
+%%Pages: 2
+%%BeginProlog
+%this header and all lines beginning with %% are neccessary for proper eps
+%feel free to adjust paper size (bounding box). DinA4=0 0 595 842
+%if you vary the width then adjust the number at /sf definition!
+%
+%Purpose of this document is to draw many subgraphs side by side with different edge types and labels as you see on the example pages.
+%
+
+
+%The values in the following lines can be adjusted.
+%Feel free to play around with them.
+%
+/rand 3 def          %Paper white frame
+/nodefontsize .5 def %Font size for nodes
+/edgefontsize .3 def %Font size for edges
+/xanzahl 4 def       %Number of graphs horizontally
+/nodesize .4 def     %Size of node circle
+/arr .5 def          %length of arrow head
+/gap .5 def          %distance between graphs
+/radius 5 def        %outer radius of graphs
+/n 7 def             %number of nodes
+/v .05 def           %shift of the labels
+/d 3 def             %distance between neighbor lines
+/thick .05 def       %line width
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%If you change the following code you might need to know what you do
+%Better skip this block!
+%
+%Radius for the arrow area
+/r radius nodesize 2 mul sub gap sub def
+%scaling factor calculated from border and radius
+/sf 595 xanzahl radius 2 mul mul rand 2 mul add div def
+/s 3 string def
+/init{
+ sf dup scale
+ radius rand add dup translate
+ thick setlinewidth
+ 0 setlinejoin
+ 1 setlinecap
+ /x 0 def /y 0 def 
+ gsave x y translate
+}def
+/nextgraph{
+  /x x 1 add xanzahl mod def
+  x 0 eq {/y y 1 add def}if
+  grestore gsave  x radius 2 mul mul  y radius 2 mul nodefontsize 2 mul add mul  translate
+}def
+/cshown{dup stringwidth pop -2 div  nodefontsize -2.5 div  rmoveto show newpath}def
+/cshowe{dup stringwidth pop -2 div  edgefontsize -2.5 div  rmoveto show newpath}def
+/w{360 mul n div}def   %number to angle
+/drawnodes{   %call with number of nodes
+ /Helvetica nodefontsize selectfont
+ 0 1 n 1 sub {
+  dup w dup         %winkel
+  sin r nodesize add mul        %x
+  exch cos r nodesize add mul   %y
+  gsave translate
+  0 0 nodesize 0 360 arc stroke     %circle
+  0 0 moveto s cvs cshown
+  grestore
+ } for
+}def
+/cw{1 1 1 setrgbcolor}def
+%<Colornumber> [0..3]
+/c{dup 0 eq
+  {0 0 0 setrgbcolor pop}
+  {4 exch sub 3 div .7 1 sethsbcolor}ifelse
+}def
+/edge{% <from> <to> <color> (<label>)
+ /labl exch def
+ /typ exch def
+ /nach exch def
+ /von exch def
+ /Helvetica edgefontsize selectfont
+ typ c
+ /x1 von  w d typ mul add sin r mul def
+ /y1 von  w d typ mul add cos r mul def
+ /x2 nach w d typ mul sub sin r mul def
+ /y2 nach w d typ mul sub cos r mul def
+ x1 y1 moveto
+ x2 y2 lineto
+ gsave
+ typ 0 ne{
+  -20 typ -10 mul add rotate
+  /l x2 x1 sub dup mul y2 y1 sub dup mul add sqrt arr div def
+  x1 x2 sub l div y1 y2 sub l div rlineto
+ }if
+ stroke
+ grestore
+ /f .5 v typ 1.5 sub mul add def
+ x1 f mul x2 1 f sub mul add
+ y1 f mul y2 1 f sub mul add
+ cw 1 index 1 index edgefontsize 2 div 0 360 arc fill typ c
+ moveto labl cshowe
+}def
+/label{/Helvetica nodefontsize selectfont 0 radius neg moveto 0 c cshown}def
+%%EndProlog
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Here is where you start changing the code again
+
+
+
+%%Page: 1 1
+init  % at the beginning of each page
+
+%just look how it is done and repeat it
+% edges need:   from to type (label) edge
+
+(2a+4b=7) label
+drawnodes
+7 2 3 (1) edge 
+2 6 2 (+2) edge 
+5 7 1 (-1) edge 
+2 4 0 (0) edge 
+7 3 1 (A) edge 
+3 2 1 (9) edge
+0 3 2 (7) edge
+4 6 0 (0) edge
+6 4 1 (-1) edge
+nextgraph
+
+(#+'*?=/%$§"!~) label
+drawnodes
+7 2 3 (1) edge 
+2 7 2 (+2) edge 
+2 7 1 (-1) edge 
+2 7 0 (0) edge 
+7 2 1 (A) edge 
+3 5 1 (9) edge
+5 3 2 (7) edge
+4 6 0 (0) edge
+6 4 1 (-1) edge
+nextgraph
+
+(<[{all ascii except round brackets}]>) label
+drawnodes
+1 0 1 (1) edge 
+2 0 2 (+2) edge 
+3 0 1 (-1) edge 
+4 0 2 (0) edge 
+5 0 1 (A) edge 
+6 0 1 (9) edge
+nextgraph
+
+
+showpage %at each page end
+%-----------------------------------------------
+%%Page: 2 2
+init %at each page beginning
+
+
+20{
+(X>123) label
+drawnodes
+7 2 3 (1) edge 
+2 7 2 (+2) edge 
+2 7 1 (-1) edge 
+2 7 0 (0) edge 
+7 2 1 (A) edge 
+3 5 1 (9) edge
+5 3 2 (7) edge
+4 6 0 (0) edge
+6 4 1 (-1) edge
+nextgraph
+} repeat
+
+showpage
+
