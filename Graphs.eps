@@ -83,9 +83,9 @@
  /y1 von  w d typ mul add cos r mul def
  /x2 nach w d typ mul sub sin r mul def
  /y2 nach w d typ mul sub cos r mul def
+ gsave
  x1 y1 moveto
  x2 y2 lineto
- gsave
  typ 0 ne{
   -20 typ -10 mul add rotate
   /l x2 x1 sub dup mul y2 y1 sub dup mul add sqrt arr div def
