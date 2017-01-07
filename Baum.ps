@@ -1,0 +1,44 @@
+gsave
+
+/r1 {rand 2 32 exp div 0.75 add} def
+/r2 {rand 2 33 exp div 0.8375 add} def
+
+/d {/w2 exch def /w1 exch def /s2 exch def /s1 exch def /l exch def} def
+/bx {
+dup 20 div neg 1 add 0.3 exch 1 exch sethsbcolor
+0 0 moveto 0 l lineto stroke
+dup 1 sub
+dup 0 gt {gsave 
+0 l translate w1 r1 mul rotate s1 r2 mul dup scale bx 
+0 0 translate w2 r1 mul rotate s2 r2 mul dup scale bx 
+grestore} if
+pop
+} def
+
+0 0 0.5 setrgbcolor
+0 0 800 800 rectfill
+0 0.2 0 setrgbcolor
+0 0 800 400 rectfill
+
+gsave
+100 700 translate
+100 -0.5 1 {
+50 rotate 
+dup 100 div 1 sub neg dup dup 4 div 0.5 add setrgbcolor 
+dup 0 exch 0 360 arc 
+fill} for
+grestore
+
+1 setlinecap
+20 20 scale
+0.3 setlinewidth
+5 20 translate
+1.1 0.8 1.1 20 -38 d 14 bx
+7 0 translate
+1 0.8 1 30 -60 d 14 bx
+7 0 translate
+2 0.8 1 15 -24 d 14 bx
+7 0 translate
+2 0.6 1.5 35 -40 d 14 bx
+showpage
+grestore

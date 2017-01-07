@@ -1,0 +1,78 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 210 297
+%%Title: Memory
+%%Pages: 2
+
+/anz 6 def
+
+/grid {
+ 0.02 setlinewidth
+ 0.5 dup dup setrgbcolor
+ 0 1 anz 1 add {
+  -0.02 1 index moveto -0.2 1 index lineto stroke
+  dup -0.02 moveto dup -0.2 lineto stroke
+  dup 1.02 anz add moveto dup 1.2 anz add lineto stroke
+ } for
+} def
+
+/paint{
+0.1 setlinewidth
+0.05 0.05 0.45 0.9 0.5 0.05 0.45 0.9 8 index
+dup 0 eq {pop 1 0 0 setrgbcolor rectfill 1 0 0 setrgbcolor rectfill} if
+dup 1 eq {pop 0 1 0 setrgbcolor rectfill 1 0 0 setrgbcolor rectfill} if
+dup 2 eq {pop 0 1 0 setrgbcolor rectfill 0 1 0 setrgbcolor rectfill} if
+dup 3 eq {pop 0 0 1 setrgbcolor rectfill 0 1 0 setrgbcolor rectfill} if
+dup 4 eq {pop 0 0 1 setrgbcolor rectfill 0 0 1 setrgbcolor rectfill} if
+dup 5 eq {pop 1 0 0 setrgbcolor rectfill 0 0 1 setrgbcolor rectfill} if
+pop
+} def
+
+%%Page: 1 1
+%5 5 translate
+210 anz div dup scale
+1 setlinejoin
+1 setlinecap
+
+%grid
+
+0 1 anz {
+0 1 anz 1 sub {
+gsave dup 2 index translate
+dup
+paint
+grestore
+pop
+}for
+pop
+}for
+
+showpage
+
+%%Page: 2 2
+%5 5 translate
+210 anz div dup scale
+1 setlinejoin
+1 setlinecap
+
+%grid
+
+0 1 anz 1 sub {
+gsave dup 0 translate
+anz 1 sub 1 index sub
+paint
+grestore
+pop
+}for
+
+1 1 anz{
+0 1 anz 1 sub {
+gsave dup 2 index translate
+1 index 1 sub
+paint
+grestore
+pop
+}for
+pop
+}for
+
+showpage

@@ -1,0 +1,44 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: -150 0 450 250
+%%Title: Baum
+
+/sq2 2 sqrt def
+/r 40 def
+/r100 r 100 div def
+/f  1 r100 sub  sq2 r100 sub  div def
+/a1 -45 def
+/a2 0 def
+/d 1 def
+
+/b45{
+-100 100 r -45 0 arc stroke
+dup 0 gt {
+gsave 0 100 translate 45 rotate f dup scale dup 1 sub b45 pop grestore
+gsave 0 100 translate -45 rotate f dup scale dup 1 sub b45 pop grestore
+}{
+0 100 100 r sub 0 180 arc stroke
+}ifelse
+100 100 r 180 225 arc stroke
+}def
+
+/d45{
+-100 100 r -45 0 arc
+dup 0 gt {
+0 100 translate f dup scale 
+ 45 rotate dup 1 sub d45 -90 rotate d45 pop 45 rotate
+1 f div dup scale 0 -100 translate
+}{
+0 100 100 r sub 0 180 arc
+}ifelse
+100 100 r 180 225 arc
+}def
+
+gsave
+d setlinewidth
+10
+d45 closepath fill
+300 0 translate
+b45 stroke
+
+showpage
+grestore

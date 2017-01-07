@@ -1,0 +1,82 @@
+gsave
+72 2.54 div dup scale	%72 dpi
+0.03 setlinewidth
+
+/ton [( C ) (Cis) ( D ) (Dis) ( E ) ( F ) (Fis) ( G ) (Gis) ( A ) ( B ) ( H )] def
+/nummer [(1) (+) (2) (m) (D) (4) (5-) (5) (5+) (6) (7) (j7)] def
+/qdur [(C) (G) (D) (A) (E) (H) (Fis) (Cis) (Gis) (Dis) (B) (F)] def
+/qmoll [(a) (e) (h) (fis) (cis) (gis) (dis) (b) (f) (c) (g) (d)] def
+/ad [0 5 10 3 7 0] def
+/Helvetica 0.5 selectfont
+
+%oberes gitter malen
+-90 rotate
+0 0 0.5 sethsbcolor
+-25 16 translate
+0.15 0.8 4.15 {		%saiten
+-0.5 1 index moveto 23.9 exch lineto stroke
+} for
+-0.3 1 23.7 {	%bünde
+dup 0.15 moveto dup 4.15 lineto stroke
+} for 
+
+%oberes gitter beschriften
+0 0 0 setrgbcolor
+0 1 5 {		%saiten
+0 1 23 {	%bünde
+dup 2 index 0.8 mul moveto 
+1 index ad exch get add 12 mod nummer exch get show
+} for
+pop
+} for
+0 1 23 {
+dup 0.4 add -1 moveto
+28 exch sub 12 mod ton exch get show
+} for
+
+
+%mittleres gitter malen
+0 0 0.5 sethsbcolor
+-1 -8 translate
+0.15 0.8 4.15 {		%saiten
+0.7 1 index moveto 13.9 exch lineto stroke
+} for
+0.7 1 13.7 {	%bünde
+dup 0.15 moveto dup 4.15 lineto stroke
+} for 
+0.6 0.15 moveto 0 4 rlineto stroke
+
+%mittleres gitter beschriften
+0 0 0 setrgbcolor
+0 1 5 {		%saiten
+0 1 13 {	%bünde
+dup 0.2 sub 2 index 0.8 mul moveto 
+1 index ad exch get add 4 add 12 mod ton exch get show
+} for
+pop
+} for
+%punkte unter bünde
+3.15 -0.5 0.1 0 360 arc fill
+5.15 -0.5 0.1 0 360 arc fill
+7.15 -0.5 0.1 0 360 arc fill
+9.15 -0.5 0.1 0 360 arc fill
+12.15 -0.35 0.1 0 360 arc fill
+12.15 -0.65 0.1 0 360 arc fill
+20 0 translate
+
+
+%quintenzirkel
+0 1 11 {
+dup
+0 3 moveto
+%ton exch get show
+qdur exch get dup stringwidth pop 2 div neg 0 rmoveto show
+0 2 moveto
+qmoll exch get dup stringwidth pop 2 div neg 0 rmoveto show
+0 2.9 moveto 0 2.4 lineto stroke
+0.4 3.17 moveto 1.2 2.95 lineto stroke
+0.4 2.17 moveto 0.72 2.08 lineto stroke
+-30 rotate
+} for
+showpage
+grestore

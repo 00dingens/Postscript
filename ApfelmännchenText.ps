@@ -1,0 +1,38 @@
+gsave
+/max 14 def  %40
+/step 0.02 def  %0.01
+
+/letter [( )(.)(,)(:)(;)(i)(L)(+)(e)(a)(%)(&)(w)(M)(#)] def
+/zeichenzahl 15 def
+/Helvetica step 1.5 mul selectfont
+72 2.54 div dup scale	%72 dpi
+10.8 9 translate %mitte
+0.001 setlinewidth
+270 rotate
+9 9 scale
+-2 step 2 {
+/x exch def
+-2 step 2 {
+/y exch def
+0 %counter
+/zx 0.0 def /zy 0.0 def
+{
+
+dup max gt {exit} if %hochzählen und abbruch
+%x y 2 index max div step mul 1.4 div 0 360 arc stroke  %bloß kreise
+%/zx zx zx mul zy zy mul sub x add def
+/zx zx zx mul zy zy mul sub x add
+/zy 2 zx zy mul mul y add def def
+zx zx mul zy zy mul add 4 gt {exit} if
+1 add
+
+} loop
+%x exch y exch 0 360 arc stroke
+%x y 2 index max div sqrt step mul 1.7 div 0 360 arc fill  %bloß kreise
+dup zeichenzahl mod x y moveto letter exch get show
+pop
+} for
+} for
+
+showpage
+grestore

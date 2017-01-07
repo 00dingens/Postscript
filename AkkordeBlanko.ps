@@ -1,0 +1,21 @@
+gsave
+50 dup scale	%zahl kleiner für mehr platz. 
+0.02 setlinewidth
+1 setlinejoin
+1 setlinecap
+
+/grid {
+0.4 0.2 1.6 {0 exch moveto 1.9 0 rlineto stroke} for
+0 0.4 1.6 {0.4 moveto 0 1 rlineto stroke} for
+} def
+
+13.5 -1.8 0{
+.6 2.3 10.2{
+gsave dup 2 index translate grid grestore
+pop
+}for
+pop
+}for
+
+showpage
+grestore

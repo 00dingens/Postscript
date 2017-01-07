@@ -1,0 +1,76 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595 842
+%%Title: Keltische Muster
+%%Pages: 2
+%%BeginProlog
+/pt2mmX 595 210 div def  %2,8333
+/pt2mmY 842 297 div def  %2,8350
+/q2 2 sqrt def           %wurzel aus 2
+/dicke 1 def             %dicke der Elemente
+/abstand 0.1 def         %abstand der Elemente
+/da {dicke 2 div abstand add q2 div} def
+/t{gsave translate}def
+/tb{t dicke setlinewidth -1 da add dup dup neg moveto neg dup neg lineto stroke grestore}def  %forward-slash
+/tf{t dicke setlinewidth -1 da add dup dup moveto neg dup lineto stroke grestore}def  %backward-slash
+/xfor{dicke setlinewidth -1 da add dup moveto 1 1 1.5 0.5 q2 2 div arct 2 da sub da lineto stroke grestore}def  %forward-slash mit haken oben rechtsrum
+/xfol{dicke setlinewidth -1 da add dup moveto 1 1 0.5 1.5 q2 2 div arct da 2 da sub lineto stroke grestore}def  %forward-slash mit haken oben linksrum
+/xforr{dicke setlinewidth -1 da add dup moveto 0.5 0.5 lineto 1 0 q2 2 div 135 315 arcn 1 da add -1 da add lineto stroke grestore}def  %forward-slash mit wende oben rechtsrum
+/xfoll{dicke setlinewidth -1 da add dup moveto 0.5 0.5 lineto 0 1 q2 2 div 315 135 arc -1 da add 1 da add lineto stroke grestore}def  %forward-slash mit wende oben rechtsrum
+/tfor{t xfor}def
+/tfol{t xfol}def
+/tfur{t 180 rotate xfor}def
+/tful{t 180 rotate xfol}def
+/tbor{t 90 rotate xfor}def
+/tbol{t 90 rotate xfol}def
+/tbur{t 270 rotate xfor}def
+/tbul{t 270 rotate xfol}def
+/tforr{t xforr}def
+/tfoll{t xfoll}def
+/tfurr{t 180 rotate xforr}def
+/tfull{t 180 rotate xfoll}def
+/tborr{t 90 rotate xforr}def
+/tboll{t 90 rotate xfoll}def
+/tburr{t 270 rotate xforr}def
+/tbull{t 270 rotate xfoll}def
+%%EndProlog
+
+%%Page: 1 1
+pt2mmX pt2mmY scale
+dicke setlinewidth
+10 10 scale
+0.5 0 translate
+
+%inneres
+23 1 27 {dup 2 mod 5 add 2 15 {1 index dup 2 mod 1 eq {tf}{tb}ifelse}for pop}for
+%ränder
+25 2 27{4 exch tful}for
+23 2 25{16 exch tfol}for
+7 2 16{28 tbol}for
+5 2 14{22 tbul}for
+%ecken
+4 23 tfull
+5 28 tboll
+15 22 tbull
+16 27 tfoll
+
+/dicke 0.7 def
+%inneres
+3 1 17 {dup 2 mod 2 add 2 18 {1 index dup 2 mod 0 eq {tf}{tb}ifelse}for pop}for
+%ränder
+3 2 15{1 exch tbor}for
+5 2 17{19 exch tbur}for
+2 2 16{18 tfor}for
+4 2 18{2 tfur}for
+%ecken
+2 2 tfurr
+1 17 tborr
+19 3 tburr
+18 18 tforr
+
+%gitter:
+%0.5 dup dup setrgbcolor 0.05 setlinewidth 0 1 20 {0 1 20 {1 index 1 1 rectstroke}for pop}for
+showpage
+
+%%Page: 2 2
+% bla bla
+showpage

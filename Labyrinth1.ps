@@ -1,0 +1,43 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: -10 -10 500 500
+%%Title: Labyrinth
+.8 setlinewidth
+1 setlinecap
+/w 50 def
+/h 50 def
+500 w div 500 h div scale
+
+/r{rand exch mod}def
+
+%leeres feld
+/A w h mul array def
+1 w h mul{0}repeat A astore pop
+A w h mul r 1 put
+%A 0 1 put
+
+400000 {
+%position
+/x w h mul r def
+A x get 0 eq not {
+
+%richtung lruo
+/rd 4 r def
+/rx 0 def /ry 0 def
+rd 0 eq {x w mod 0 gt{/rx -1 def}if} if
+rd 1 eq {x w mod w 1 sub lt{/rx 1 def}if} if
+rd 2 eq {x w idiv 0 gt{/ry -1 def}if} if
+rd 3 eq {x w idiv w 1 sub lt{/ry 1 def}if} if
+
+%neue position
+/xn x rx add ry w mul add def
+
+A xn get 0 eq {
+%x w idiv x w mod 0.4 0 360 arc fill
+x w idiv x w mod moveto ry rx rlineto stroke
+A xn A x get 1 add put
+}if}if
+
+}repeat 
+
+
+showpage

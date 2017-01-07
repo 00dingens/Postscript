@@ -1,0 +1,15 @@
+gsave
+4.6 4.6 scale
+3 21 translate
+0.01 setlinewidth
+0 0 moveto
+
+/x {rotate dup 0 gt} def /f {0 1 rlineto} def
+/l {dup 1 sub 90 x {r} if f -90 x {l} if f 0 x {l} if -90 rotate f 0 x {r} if 90 rotate pop} def
+/r {dup 1 sub -90 x {l} if f 90 x {r} if f 0 x {r} if 90 rotate f 0 x {l} if -90 rotate pop} def
+
+
+7 r
+stroke
+showpage
+grestore

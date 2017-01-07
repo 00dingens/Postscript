@@ -1,0 +1,318 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 450 300
+%%Pages: 7
+%%BeginProlog
+
+/l 2.5 def %linewidth
+/r 15 def  %radius
+/p 15 def  %arrow size
+/pa 40 def %arrow angle
+/k 10 def  %pfeilkrümmung
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/grid{
+ l 10 div setlinewidth
+ .9 .9 .9 setrgbcolor
+ -1000 10 1000 {
+  -1000 1 index moveto 2000 0 rlineto stroke
+  -1000 moveto 0 2000 rlineto stroke
+ }for
+ l 2 div setlinewidth
+ .8 .8 .8 setrgbcolor
+ -1000 100 1000 {
+  -1000 1 index moveto 2000 0 rlineto stroke
+  -1000 moveto 0 2000 rlineto stroke
+ }for
+ 0 0 0 setrgbcolor
+}def
+
+/konf{
+ translate
+ grid
+ l setlinewidth
+ 1 setlinecap
+ 1 setlinejoin
+}def
+
+%usage (label) ox oy x1 y1 x2 y2 true
+%or    (label)       x1 y1 x2 y2 false
+/arrow{
+ /Helvetica 12 selectfont
+  % definitions
+ /offs exch def /y2 exch def /x2 exch def /y1 exch def /x1 exch def 
+ offs not {0 0} if /oy exch def /ox exch def
+ /label exch def
+ /xd x2 x1 sub def
+ /yd y2 y1 sub def
+ /dist xd xd mul yd yd mul add sqrt def
+ /xm xd 2 div yd neg dist div k mul add def % x für pfeilmitte
+ /ym yd 2 div xd     dist div k mul add def % y für pfeilmitte
+  % draw
+ gsave
+ x1 y1 translate  %center of startstate
+  % label
+ xm ox add y1 y2 le {label stringwidth pop y1 y2 eq {2 div} if sub} if 
+ ym oy add x1 x2 gt {8 sub} if 
+ moveto label show newpath
+  % arrow
+ xd dist div r mul yd dist div r mul 1 index 1 index moveto  %start of arrow
+ xm ym
+ xd dist div dist r sub mul yd dist div dist r sub mul curveto  %end of arrow
+ xd dist div dist r sub mul yd dist div dist r sub mul translate %zur pfeilspitze
+  % arrow head
+ pa neg rotate xd dist div neg p mul yd dist div neg p mul rlineto
+ stroke
+ grestore
+}def
+
+%pfeil ohne offset
+%usage (label) x1 y1 x2 y2
+/pfeil {1 2 eq arrow} def
+
+%pfeil mit offset für label
+%usage (label) xo yo x1 y1 x2 y2
+/pfeilo {1 1 eq arrow} def
+
+% usage: label winkel xPos yPos
+/selbst {
+ /Helvetica 12 selectfont
+ gsave translate dup rotate r 0 moveto 30 20 30 -20 5 -5 rcurveto stroke
+ gsave r 5 add -5 translate 5 pa add rotate 0 p neg moveto 0 0 lineto stroke grestore
+ r 30 add 0 moveto neg rotate dup stringwidth pop 2 div neg 0 rmoveto show
+ grestore
+} def
+
+%usage -% +% |% x y
+/ausgabe{
+ /Helvetica 12 selectfont
+ gsave 1 setlinewidth translate
+ 0 0 40 37 rectstroke l setlinewidth
+ 5.5 2 moveto (|) show 38 2 moveto dup stringwidth pop neg 0 rmoveto show
+ 3 14 moveto (+) show 38 14 moveto dup stringwidth pop neg 0 rmoveto show
+ 5 26 moveto (-) show 38 26 moveto dup stringwidth pop neg 0 rmoveto show
+ newpath grestore
+}def
+
+%usage (label) x y
+/state{
+ /Helvetica r 1.5 mul selectfont
+ gsave translate
+ 0 0 r 0 360 arc stroke
+ dup stringwidth pop -2 div r -2 div moveto show
+ grestore
+}def
+
+%%EndProlog
+%%Page: 1 1
+
+150 150 konf
+
+% Ausgabe
+  (5%)  (95%) (0%) -35 -70 ausgabe
+ (97%)   (3%) (0%) 227 -105 ausgabe
+ (35%)  (65%) (0%) 227 35 ausgabe
+
+%Übergangspfeile
+ % von 0 (-100 0)
+(100%) -100 0 0 0 pfeil     % nach 1
+ % von 1 (0 0)
+(96%) 45 0 0 selbst         % nach 1
+(4%) 0 0 100 -70 pfeil      % nach 2
+ % von 2 (100 -70)
+(1%) 60 100 -70 selbst      % nach 2
+(99%) 100 -70 200 -70 pfeil % nach 3
+ % von 3 (200 -70)
+(8%) 200 -70 100 -70 pfeil  % nach 2
+(59%) 45 200 -70 selbst     % nach 3
+(33%) 3 0 200 -70 200 70 pfeilo  % nach 5
+ % von 4 (100 70)
+(21%) -12 10 100 70 200 -70 pfeilo  % nach 3
+(79%) 100 70 200 70 pfeil   % nach 5
+ % von 5 (200 70)
+(15%) 200 70 100 70 pfeil   % nach 4
+(85%) 45 200 70 selbst      % nach 5
+
+%States
+(A) -100  0 state
+(B)   0   0 state
+(C) 100  70 state
+(D) 100 -70 state
+(E) 200  70 state
+(F) 200 -70 state
+
+showpage
+
+%%Page: 2 2
+125 150 konf
+
+(A) 100 0 state
+(100%) 90 100 0 selbst
+(23%) (67%) (10%) 85 -70 ausgabe
+
+showpage
+
+%%Page: 3 3
+175 150 konf
+
+(A)   0 0 state
+(B) 100 0 state
+
+(95%) 45   0 0 selbst
+(5%) 0 0 100 0 pfeil
+(99%) 45 100 0 selbst
+(1%) 100 0 0 0 pfeil
+
+(2%) (92%) (6%) -15 -70 ausgabe
+(41%) (45%) (14%) 85 -70 ausgabe
+
+showpage
+
+%%Page: 4 4
+125 150 konf
+
+(A)   0 0 state
+(B) 100 0 state
+(C) 200 0 state
+
+(100%) 0 0 100 0 pfeil
+(95%) 45 100 0 selbst
+(5%) 100 0 200 0 pfeil
+(100%) 45 200 0 selbst
+
+(0%) (0%) (100%) -15 -70 ausgabe
+(2%) (98%) (0%) 85 -70 ausgabe
+(38%) (47%) (14%) 185 -70 ausgabe
+
+showpage
+
+%%Page: 5 5
+170 150 konf
+
+(A)   0 50 state
+(B) 100 50 state
+(C)   0 -50 state
+(D) 100 -50 state
+
+(98%) 0 50 100 50 pfeil
+(2%) 0 50 0 -50 pfeil
+(95%) 45 100 50 selbst
+(5%) 100 50 100 -50 pfeil
+(82%) 45 0 -50 selbst
+(17%) 0 -50 100 -50 pfeil
+(100%) 100 -50 0 -50 pfeil
+
+(0%) (0%) (100%) -70 30 ausgabe
+(2%) (98%) (0%) 140 30 ausgabe
+(49%) (51%) (0%) -70 -70 ausgabe
+(0%) (19%) (81%) 140 -70 ausgabe
+
+showpage
+
+%%Page: 6 6
+75 150 konf
+
+(A)   0 40 state
+(B) 100 40 state
+(C) 200 40 state
+(D) 300 40 state
+(E) 250 -40 state
+
+(100%) 0 40 100 40 pfeil
+(95%) 45 100 40 selbst
+(5%) 100 40 200 40 pfeil
+(100%) 200 40 300 40 pfeil
+(12%) 300 40 200 40 pfeil
+(53%) 45 300 40 selbst
+(34%) 300 40 250 -40 pfeil
+(    95%) 0 250 -40 selbst
+(5%) 250 -40 200 40 pfeil
+
+
+(0%) (0%) (100%) -15 70 ausgabe
+(3%) (97%) (0%) 65 70 ausgabe
+(94%) (6%) (0%) 165 70 ausgabe
+(0%) (0%) (100%) 265 70 ausgabe
+(27%) (61%) (11%) 185 -70 ausgabe
+
+showpage
+
+%%Page: 7 7
+0 150 konf
+
+(A) 100 40 state
+(B) 150 -40 state
+(C) 200 40 state
+(D) 300 40 state
+(E) 250 -40 state
+(F) 350 -40 state
+
+(100%) -13 10 100 40 150 -40 pfeilo
+(95%    ) 180 150 -40 selbst
+(5%) 5 0 150 -40 200 40 pfeilo
+(100%) 200 40 300 40 pfeil
+(9%) 300 40 200 40 pfeil
+(58%) 45 300 40 selbst
+(28%) 300 40 350 -40 pfeil
+(6%) 300 40 250 -40 pfeil
+(2%) 250 -40 200 40 pfeil
+(8%) 250 -40 300 40 pfeil
+(39%    ) 180 250 -40 selbst
+(52%) 250 -40 350 -40 pfeil
+(93%) 350 -40 250 -40 pfeil
+(7%) 45 350 -40 selbst
+
+
+(0%) (0%) (100%) 85 70 ausgabe
+(3%) (97%) (0%) 135 -110 ausgabe
+(0%) (0%) (100%) 175 70 ausgabe
+(100%) (0%) (0%) 265 70 ausgabe
+(45%) (55%) (0%) 225 -110 ausgabe
+(0%) (70%) (30%) 315 -110 ausgabe
+
+showpage
+
+%%Page: 8 8
+0 150 konf
+
+(A) 100  70 state
+(B) 200  70 state
+(C) 300  70 state
+(D) 250   0 state
+(E) 350   0 state
+(F) 200 -80 state
+(G) 300 -80 state
+
+(100%) 100 70 200 70 pfeil
+
+(91%) 45 200 70 selbst
+(9%) 200 70 300 70 pfeil
+
+(91%) 45 300 70 selbst
+(8%) 300 70 350 0 pfeil
+
+(58%) 45 250 0 selbst
+(9%) 250 0 350 0 pfeil
+(27%) -30 12 250 0 200 -80 pfeilo
+(6%) -3 -3 250 0 300 -80 pfeilo
+
+(100%) 0 3 350 0 250 0 pfeilo
+
+(    7%) -45 200 -80 selbst
+(93%) 0 -3 200 -80 300 -80 pfeilo
+
+(8%) 3 2 300 -80 250 0 pfeilo
+(1%) 27 -10 300 -80 350 0 pfeilo
+(52%) 300 -80 200 -80 pfeil
+(      39%) -45 300 -80 selbst
+
+
+(0%) (0%) (100%) 65 100 ausgabe
+(4%) (96%) (0%) 165 100 ausgabe
+(1%) (99%) (0%) 265 100 ausgabe
+(100%) (0%) (0%) 180 -20 ausgabe
+(0%) (0%) (100%) 380 -20 ausgabe
+(0%) (70%) (30%) 130 -100 ausgabe
+(45%) (55%) (0%) 335 -95 ausgabe
+
+showpage

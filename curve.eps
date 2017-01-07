@@ -1,0 +1,60 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -100 0 200 200
+
+/pos .3 def
+
+/bezier{
+/y4 exch def /x4 exch def /y3 exch def /x3 exch def /y2 exch def /x2 exch def /y1 exch def /x1 exch def
+.5 .5 .5 setrgbcolor x1 y1 moveto x2 y2 lineto x3 y3 lineto x4 y4 lineto stroke
+0 0 0 setrgbcolor
+0 1 20 {
+20 div
+/p exch def /q 1 p sub def
+/p2 p p mul def /p3 p2 p mul def /q2 q q mul def /q3 q2 q mul def
+/pq p q mul def  /p2q p2 q mul def  /pq2 p q2 mul def
+
+%%%erste quadratische kurve
+%linien
+p pos eq {1 0 0} {1 .6 .6} ifelse setrgbcolor
+x1 p mul x2 q mul add  y1 p mul y2 q mul add  moveto
+x2 p mul x3 q mul add  y2 p mul y3 q mul add  lineto stroke
+%punkt
+p2 x1 mul  2 pq x2 mul mul add  q2 x3 mul add
+p2 y1 mul  2 pq y2 mul mul add  q2 y3 mul add
+.5 0 360 arc fill
+
+%%%zweite quadratische kurve
+%linien
+p pos eq {0 1 0} {.6 1 .6} ifelse setrgbcolor
+x2 p mul x3 q mul add  y2 p mul y3 q mul add  moveto
+x3 p mul x4 q mul add  y3 p mul y4 q mul add  lineto stroke
+%punkt
+p2 x2 mul  2 pq x3 mul mul add  q2 x4 mul add
+p2 y2 mul  2 pq y3 mul mul add  q2 y4 mul add
+.5 0 360 arc fill
+
+%%%kubische bezier kurve
+%linien
+p pos eq {0 0 1} {.6 .6 1} ifelse setrgbcolor
+p2 x1 mul  2 pq x2 mul mul add  q2 x3 mul add
+p2 y1 mul  2 pq y2 mul mul add  q2 y3 mul add
+moveto
+p2 x2 mul  2 pq x3 mul mul add  q2 x4 mul add
+p2 y2 mul  2 pq y3 mul mul add  q2 y4 mul add
+lineto stroke
+
+%punkt
+0 0 0 setrgbcolor
+/x p3 x1 mul  3 p2q x2 mul mul add  3 pq2 x3 mul mul add  q3 x4 mul add def
+/y p3 y1 mul  3 p2q y2 mul mul add  3 pq2 y3 mul mul add  q3 y4 mul add def
+x y 1 0 360 arc fill
+
+
+}for
+}def
+
+.2 setlinewidth
+%10 50 moveto 90 10 10 90 90 90 curveto stroke
+-100 20  100 10  10 190  200 90 bezier
+
+showpage 

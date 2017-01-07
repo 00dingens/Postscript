@@ -1,0 +1,43 @@
+300 700 translate
+%/Helvetica 1 selectfont
+%/str 5 string def
+0 0 1 0 360 arc fill
+/max 200 def
+/A max 2 add array def
+0 1 max 1 add {A exch 0 put} for
+A 0 1 put
+
+% für Z2
+/r [.7 0] def /g [.7 0] def /b [.7 0] def /z 2 def
+
+% für Z3 
+/r [1 1 0] def /g [1 0 1] def /b [1 0 0] def /z 3 def
+
+0 1 max {
+dup 1 add -1 0 {
+
+dup 0 gt {
+dup A exch get
+A 2 index 1 sub get add z mod
+/X exch def
+dup A exch X put
+} {A 0 1 put /X 1 def} ifelse
+
+1 index 2 mod 0 eq {/X z X sub def} if
+
+%farbe
+r X get g X get b X get
+setrgbcolor
+
+%pos bestimmen
+dup 2 mul 2 index sub 2 mul 2 index 3 mul neg
+
+1 0 360 arc fill		%kreise
+%moveto X z mod str cvs show	%text
+
+
+pop
+} for
+pop
+} for
+showpage

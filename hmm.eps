@@ -1,0 +1,89 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -250 -200 250 200
+gsave
+/l 4 def
+l setlinewidth
+1 setlinecap
+1 setlinejoin
+/r 20 def
+/p 10 def
+
+% usage: länge winkel xPos yPos pfeil
+/pfeil {gsave translate rotate r 0 moveto dup r sub l 2 div sub 0 lineto stroke r sub l 2 div sub 0 translate p neg dup moveto 0 0 lineto p neg p rlineto stroke grestore} def
+% usage: winkel xPos yPos pfeil
+/selbst {gsave translate rotate r 0 moveto 30 -20 30 20 5 5 rcurveto stroke gsave r 5 add 5 translate -20 rotate p 0 moveto 0 0 lineto 0 p lineto stroke grestore grestore} def
+% usage: winkel xPos yPos pfeilrund
+/pfeilrund {gsave translate rotate 15 15 moveto 30 25 70 25 85 15 curveto stroke 85 15 translate -25 rotate p neg dup moveto 0 0 lineto p neg p rlineto stroke grestore} def
+
+0.9 dup dup setrgbcolor
+-140 -40 80 130 rectfill
+20 -140 120 80 rectfill
+20 60 120 80 rectfill
+0 0 0 setrgbcolor
+/Helvetica 20 selectfont
+-140 -40 moveto (A) show
+20 -140 moveto (B) show
+20 60 moveto (C) show
+newpath
+
+%Pfeile
+/f {1 exch sub dup dup setrgbcolor} def
+2 {
+% von 0
+100 0 -200 0 pfeil
+% von 1
+0.05 f 100 0 -100 0 pfeil
+0.95 f 45    -100 0 selbst
+% von 2
+   %141 45   0 0 pfeil
+1 f 141 -45  0 0 pfeil
+% von 3
+0.15 f 0  100 100 pfeilrund
+0.85 f 60 100 100 selbst
+% von 4
+0.8 f 180 200 100 pfeilrund
+0.2 f 223 243 200 100 pfeil
+% von 5
+0.1 f 0  100 -100 pfeilrund
+0.3 f 200 90 100 -100 pfeil
+0.6 f 230 100 -100 selbst
+% von 6
+0.95 f 180 200 -100 pfeilrund
+0.05 f 60 200 -100 selbst
+1 f
+/f {4 mul setlinewidth} def
+1 f
+} repeat
+
+%Kreise
+1 f
+-200    0 r 0 360 arc stroke
+-100    0 r 0 360 arc stroke
+   0    0 r 0 360 arc stroke
+ 100  100 r 0 360 arc stroke
+ 100 -100 r 0 360 arc stroke
+ 200  100 r 0 360 arc stroke
+ 200 -100 r 0 360 arc stroke
+
+%Beschriftung
+% Zustände
+-200 r 0.7 mul moveto -200 r -0.7 mul lineto stroke
+0 r 0.7 mul moveto 0 r -0.7 mul lineto stroke
+200 100 r 0.7 mul add moveto 200 100 r -0.7 mul add lineto stroke
+200 -100 r 0.7 mul add moveto 200 -100 r -0.7 mul add lineto stroke
+-107 7 4 0 360 arc fill -93 7 4 0 360 arc fill -100 -2 8 200 340 arc stroke
+107 107 4 0 360 arc fill 93 107 4 0 360 arc fill 93 93 moveto 14 0 rlineto stroke
+107 -93 4 0 360 arc fill 93 -93 4 0 360 arc fill 100 -110 8 20 160 arc stroke
+% Ausgaben
+% von 1
+-115 50 moveto 30 0 rlineto -100 65 moveto 0 -30 rlineto stroke
+1 setlinewidth -120 40 moveto 10 0 rlineto stroke
+% von 3
+3 setlinewidth 50 110 moveto 20 0 rlineto -10 -10 rmoveto 0 20 rlineto stroke
+2 setlinewidth 50 95 moveto 15 0 rlineto stroke
+% von 5
+1 setlinewidth 45 -93 moveto 10 0 rlineto -5 -5 rmoveto 0 10 rlineto stroke
+4 setlinewidth 40 -105 moveto 30 0 rlineto stroke
+
+showpage 
+grestore

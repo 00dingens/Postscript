@@ -1,0 +1,134 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 842 595
+%%Title: Enigma
+%%Pages: 2
+%%BeginProlog
+/centershow {dup stringwidth pop 2 div neg 0 rmoveto show} def
+/char ( ) def
+/toChar {char exch 0 exch put char} def
+/w 360 -26 div def
+/xywL {dup w  2 div sin mul exch w  2 div cos mul} def
+/xywR {dup w -2 div sin mul exch w -2 div cos mul} def
+/xywL2 {dup w  4 div sin mul exch w  4 div cos mul} def
+/xywR2 {dup w -4 div sin mul exch w -4 div cos mul} def
+
+%parameter: innendurchmesser rotation
+/abc {gsave rotate /radius exch def 1 1 26 {0 radius moveto 64 add toChar centershow w rotate} for grestore} def
+
+%parameter: radius
+/circle {.7 dup dup setrgbcolor 0 360 arc stroke 0 0 0 setrgbcolor} def
+
+%parameter: zielShift bahn
+/vonNach {
+  gsave
+  /rVia exch rNach add def  /wd exch def  /rl wd 0 gt def
+  0 rVon moveto
+  0 rVia rVon add 2 div  0 rVia  rVia rl{xywR}{xywL}ifelse curveto
+  0 0 rVia  w rl{2}{-2}ifelse div 90 add  wd w mul w rl{2}{-2}ifelse div sub 90 add rl{arcn}{arc}ifelse
+  wd w mul rotate
+  0 rVia  0 rVia  0 rNach curveto
+  stroke grestore} def
+
+%parameter: innendurchmesser
+/startKreis {/rBase exch def
+  gsave 5 rBase add -3 abc grestore
+  gsave 2 {0 rBase moveto 0 15 rlineto stroke  -3 rBase 3 add moveto 3 -3 rlineto 3 3 rlineto stroke -6 rotate} repeat grestore
+  26 {0 rBase moveto 0 5 rlineto stroke w rotate} repeat 0 0 15 rBase add circle 0 0 rBase circle  0 0 2 circle} def
+
+%parameter: 26x(shift bahn)
+/walze{
+  gsave 35 rBase add -3 abc grestore 
+  /rVon 45 rBase add def /rNach rBase def
+  26 {1 index 0 eq {0 rVon moveto 0 rNach lineto stroke pop pop}{vonNach}ifelse w rotate } repeat 0 0 45 rBase add circle 0 0 rBase circle 0 0 2 circle
+} def
+
+%parameter: innendurchmesser
+/walzeA {/rBase exch def
+   0  0                          %Z
+  -5 25  1 10  -2 30  0  0 -3 30 %Y-U
+  -5 20  5 10  -1 30 -1 30 -3 30 %T-P
+  -3 15  5 10  -4 20  2 10 -3 30 %O-K
+  -6 15  2 25  -2 20  3 10  1 30 %J-F
+  -8 20 -1 30  -1 15  3 10  0  0 %E-A
+  walze} def
+
+/walzeB {/rBase exch def
+  -2 20                          %Z
+   3 30  1 15   0 30 -3 15 -1 20 %Y-U
+  -3 20  2 10   0  0 -5 30  6 25 %T-P
+   1 20  0  0   2 20 -2 10 -2 30 %O-K
+   3 17 -4 10  -1 15  4 25 -2 30 %J-F
+   3 20 -1 25   3 15 -2 15  0  0 %E-A
+  walze} def
+
+/umkehrWalze {/rBase exch def
+  rBase 10 sub -3 abc
+  -10 6 13 -5 -7 -1 1 -2 5 2 10 7 -6 -4 -10 13 -3 4 6 3 -5 -6 -1 1 10 5
+  26 {gsave 0 rBase moveto  w mul dup rotate 0 0 0 rBase  4 index sin dup mul 1 6 index cos sub dup mul add sqrt rBase mul 2 div   arct 0 rBase lineto stroke grestore pop
+  w rotate} repeat
+  0 0 rBase circle 0 0 2 circle} def
+%%EndProlog
+
+%%Page: 1 1
+1 setlinewidth
+/Helvetica 10 selectfont
+gsave
+210 385 translate
+180 startKreis
+435 25 translate
+135 walzeA
+-190 -260 translate
+90 walzeB
+250 -30 translate
+90 umkehrWalze
+grestore
+
+/Helvetica 5 selectfont
+
+40 -10 translate
+30 0 abc
+25 w 24 mul abc
+20 w 10 mul abc
+15 w 2 mul abc
+35 25 moveto 50 25 lineto stroke
+45 30 moveto 50 25 lineto 45 20 lineto stroke
+
+80 0 translate
+30 0 abc
+25 w 24 mul abc
+20 w 10 mul abc
+15 w abc
+35 25 moveto 50 25 lineto stroke
+45 30 moveto 50 25 lineto 45 20 lineto stroke
+
+80 0 translate
+30 0 abc
+25 w 24 mul abc
+20 w 9 mul abc
+15 0 abc
+35 25 moveto 50 25 lineto stroke
+45 30 moveto 50 25 lineto 45 20 lineto stroke
+
+80 0 translate
+30 0 abc
+25 w 24 mul abc
+20 w 9 mul abc
+15 w neg abc
+
+showpage
+
+
+%%Page: 2 2
+1 setlinewidth
+/Helvetica 10 selectfont
+gsave
+410 305 translate
+180 startKreis
+135 walzeA
+90 walzeB
+90 umkehrWalze
+.5 .5 .5 setrgbcolor
+0 0 5 0 360 arc fill
+grestore
+showpage
+

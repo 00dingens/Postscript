@@ -1,0 +1,18 @@
+gsave
+0.01 setlinewidth
+%ecken
+/x [9 590 9] def 
+/y [735 400 65] def
+
+%startpunkt
+/X 9 def /Y 735 def
+
+300000 {
+ X Y 0.3 0 360 arc fill    % punkt malen
+ rand 3 mod    % nummer der ecke
+ dup x exch get X add 2 div /X exch def    % neues x
+ y exch get Y add 2 div /Y exch def    % neues y
+} repeat
+
+showpage
+grestore

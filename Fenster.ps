@@ -1,0 +1,20 @@
+/malen{
+0 0 1 1 rectclip
+mauer
+}def
+
+/mauer{ 0 0.05 1 {} for} def
+
+
+
+50 50 scale
+
+0 1 10 {
+0 1 8 {
+gsave
+1 index 1 index translate
+malen
+grestore
+pop
+} for
+} for

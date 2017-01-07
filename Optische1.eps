@@ -1,0 +1,109 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595 842
+%%Title: Optische Täuschungen von Rafael
+%%Pages: 4
+%%BeginProlog
+
+/sf 38.5 def  %dummy
+/sin30 30 sin def /cos30 30 cos def
+
+%%EndProlog
+
+%%Page: 1 1
+47.5 121 translate
+0.01 setlinewidth
+1 setlinecap
+1 setlinejoin
+/anz 2 def
+/th 0.3 def
+
+/thc th cos30 mul def /ths th sin30 mul def
+/trapezr {cos30 neg  -0.5 moveto cos30 th sub  -0.5 lineto cos30 th sub ths sub  thc 0.5 sub lineto ths cos30 sub  thc 0.5 sub lineto} def
+/trapezl {cos30  -0.5 moveto th cos30 sub -0.5 lineto th cos30 sub ths add thc 0.5 sub lineto cos30 ths sub thc 0.5 sub lineto} def
+
+/dreieck {
+ % for debug: 0 0 1 0 360 arc stroke 0 0 cos30 0 360 arc stroke 0 0 sin30 0 360 arc stroke
+ % arg1: angle for first rotation
+ % arg2: bool if inner triangle
+ rotate
+ 3 {
+  dup {trapezl closepath} {trapezr} ifelse stroke 120 rotate
+ } repeat pop %arg2
+} def
+/seite {sin30 neg cos30 neg moveto thc neg ths neg rlineto 0 anz 1 add cos30 mul sin30 div th add rlineto thc ths rlineto stroke newpath 0 anz cos30 mul sin30 div translate -120 rotate} def
+500 anz 3 add div dup scale 0.5 dup translate
+0 1 anz {
+ dup 1 anz {
+  gsave
+  1 index 1.5 mul
+  1 index 3 index 2 div sub cos30 mul sin30 div
+  translate
+  gsave false 30 dreieck grestore
+  1 index 0 gt {
+   -1 0 translate true 90 dreieck
+  } if
+  grestore
+  pop
+ } for
+ pop
+} for
+3 {seite} repeat
+showpage
+
+%%Page: 2 2
+47.5 121 translate
+/anz 2 def
+/th 0.3 def
+0.01 setlinewidth
+1 setlinecap
+1 setlinejoin
+/thc th cos30 mul def /ths th sin30 mul def
+/trapezr {cos30 neg  -0.5 moveto cos30 th sub  -0.5 lineto cos30 th sub ths sub  thc 0.5 sub lineto ths cos30 sub  thc 0.5 sub lineto} def
+/trapezl {cos30  -0.5 moveto th cos30 sub -0.5 lineto th cos30 sub ths add thc 0.5 sub lineto cos30 ths sub thc 0.5 sub lineto} def
+
+/dreieckfill {
+ rotate
+  1 0 0 setrgbcolor
+  dup {trapezl closepath} {trapezr} ifelse fill 120 rotate
+  0 1 0 setrgbcolor
+  dup {trapezl closepath} {trapezr} ifelse fill 120 rotate
+  0 0 1 setrgbcolor
+  dup {trapezl closepath} {trapezr} ifelse fill 120 rotate
+ pop %arg2
+} def
+/seitefill {sin30 neg cos30 neg moveto thc neg ths neg rlineto 0 anz 1 add cos30 mul sin30 div th add rlineto thc ths rlineto closepath fill newpath 0 anz cos30 mul sin30 div translate -120 rotate} def
+
+500 anz 3 add div dup scale 0.5 dup translate
+0 1 anz {
+ dup 1 anz {
+  gsave
+  1 index 1.5 mul
+  1 index 3 index 2 div sub cos30 mul sin30 div
+  translate
+  gsave false 30 dreieckfill grestore
+  1 index 0 gt {
+   -1 0 translate true 90 dreieckfill
+  } if
+  grestore
+  pop
+ } for
+ pop
+} for
+1 0 0 setrgbcolor seitefill
+0 0 1 setrgbcolor seitefill
+0 1 0 setrgbcolor seitefill
+showpage
+
+%%Page: 3 3
+48 100 495 {
+71 100 742 {
+gsave
+1 index 1 index translate
+5 5 85 85 rectfill
+grestore
+pop } for
+pop } for
+showpage
+
+%%Page: 4 4
+showpage

@@ -1,0 +1,14 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: -10 -2 10 2
+
+%ELITE
+%.2 setlinewidth /r{90 mul rotate}def /x{moveto 0 2 rlineto stroke}def -7 3 6{-1 x}for 1 1 2 {r -1 1 1{5 x}for 1 -4 x} for -1 1 x showpage
+
+%COCOS
+%.2 setlinewidth /a{arc stroke}def /r{180 rotate}def /c{8 6{0 2 90 270 a}for}def -5 c -2 c r -6 c -10 0 translate 2 {0 1 1 0 270 a r}repeat showpage
+
+%BANANA
+%.2 setlinewidth /m{moveto}def/s{rlineto stroke}def /a{m 1 2 rlineto 1 -2 s}def /b{.5 90 270 arc stroke}def -7 3 7{-1 a}for 180 rotate -5 6 5{-1 a}for -6.5 6 6{0 m 1 0 s}for 9 -1 m 0 2 s 9 .5 b 9 -.5 b showpage
+
+%BANANA
+9 -.5 9 .5 0 2 9 -1 -6.5 6 6 -5 6 5 180 -7 3 7/b{.5 90 270 arc stroke}/a{m 1 -2 1 2 rlineto s}/s{rlineto stroke} /m{moveto}.2 setlinewidth def def def def{-1 a}for rotate{-1 a}for{0 m 1 0 s}for m s b b showpage

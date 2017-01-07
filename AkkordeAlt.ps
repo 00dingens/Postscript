@@ -1,0 +1,121 @@
+gsave
+50 dup scale	%zahl kleiner für mehr platz. 
+0.02 setlinewidth
+1 setlinejoin
+1 setlinecap
+/Helvetica 0.4 selectfont
+
+/grid {
+0.4 0.2 1.6 {0 exch moveto 1.5 0 rlineto stroke} for
+0 0.4 1.2 {0.4 moveto 0 1 rlineto stroke} for
+} def
+/name {
+0.3 1.5 moveto show newpath
+} def
+/bundnummer [( ) (I) (II) (III) (IV) (V) (VI) (VII) (VIII) (IX) (X) (XI) (XII)] def
+
+/bund {
+dup 0 eq {-0.05 0.4 moveto 0 1 rlineto stroke}
+{
+0.4 0.2 1.6 {-0.3 exch moveto 0.3 0 rlineto stroke} for
+gsave 0.1 setlinewidth -0.2 0.4 moveto 0 1 rlineto stroke grestore} ifelse
+-0.3 0 moveto bundnummer exch get show newpath
+} def
+
+/bundx {
+dup 0 eq {-0.05 0.4 moveto 0 1 rlineto stroke}
+{
+0.4 0.2 1.6 {-0.1 exch moveto 0.1 0 rlineto stroke} for
+} ifelse
+-0.1 0 moveto bundnummer exch get show newpath
+} def
+
+/set {
+exch 0.4 mul 0.2 sub exch 0.2 mul 0.2 add
+0.075 0 360 arc fill 
+} def
+
+/no {
+exch 0.4 mul 0.2 sub exch 0.2 mul 0.2 add
+1 index 0.06 sub 1 index 0.06 sub moveto 0.12 0.12 rlineto stroke
+1 index 0.06 sub 1 index 0.06 add moveto 0.12 -0.12 rlineto stroke
+} def
+
+/evtl {
+exch 0.4 mul 0.2 sub exch 0.2 mul 0.2 add
+1 index 1 index
+1 index 1 index
+0.06 0 360 arc fill 
+0.1 -50 50 arc stroke
+0.1 130 230 arc stroke
+} def
+
+/basis {
+grid name bund
+} def
+
+1.2 14.5 moveto (Akkorde in sinnvoller Lernreihenfolge von Rafael) show newpath
+
+gsave 1 12 translate
+0 (E) basis 1.9 2 set 2.1 3 set 1 4 set grestore
+gsave 3 12 translate
+0 (A) basis 1.8 3 set 2 4 set 2.2 5 set grestore
+gsave 5 12 translate
+0 (D) basis 2.1 4 set 3 5 set 1.9 6 set 2 1 no grestore
+gsave 7 12 translate
+0 (G) basis 2.8 1 set 2 2 set 3.2 6 set 3 5 evtl grestore
+gsave 9 12 translate
+0 (C) basis 1 5 set 2 3 set 3.1 2 set 2.9 1 evtl grestore
+
+gsave 1 10 translate
+0 (e) basis 1.9 2 set 2.1 3 set grestore
+gsave 3 10 translate
+0 (a) basis 1.9 3 set 2.1 4 set 1 5 set grestore
+gsave 5 10 translate
+0 (d) basis 2 4 set 3 5 set 1 6 set 1 1 no grestore
+gsave 7 10 translate
+0 (H7) basis 1 3 set 1.8 2 set 2 4 set 2.2 6 set 2 1 no grestore
+gsave 9 10 translate
+0 (C) basis 1 5 set 2 3 set 3.1 2 set 2.9 1 evtl grestore
+
+gsave 1 8 translate
+0 (E7) basis 1.9 2 set 2.1 3 evtl 1 4 set 3 5 set grestore
+gsave 3 8 translate
+0 (A7) basis 1.8 3 set 2 4 evtl 2.2 5 set 3 6 set grestore
+gsave 5 8 translate
+0 (D7) basis 1.9 4 set 1 5 set 2.1 6 set 2 1 no grestore
+gsave 7 8 translate
+0 (D4) basis 2 4 evtl 2.9 5 set 3.1 6 set 2 1 no grestore
+gsave 9 8 translate
+0 (C7) basis 1 5 set 2 3 set 3.1 4 set 2.9 2 set grestore
+
+gsave 1 6 translate
+1 (F) basis 1.9 2 set 2.1 3 set 1 4 set grestore
+gsave 3 6 translate
+2 (h) basis 1.9 3 set 2.1 4 set 1 5 set grestore
+gsave 5 6 translate
+1 (B) basis 1.8 3 set 2 4 set 2.2 5 set grestore
+gsave 7 6 translate
+2 (Fis7) basis 2 2 set 1 4 set grestore
+gsave 9 6 translate
+4 (cis7) basis 1 5 set 2 3 set grestore
+
+gsave 1 4 translate
+2 (H) basis 1.8 3 set 2 4 set 2.2 5 set grestore
+gsave 3 4 translate
+4 (D) grid name bundx 1 6 set 3.1 5 set 2.9 4 set grestore
+gsave 5 4 translate
+0 (Fmaj7) basis 1 5 set 2 4 set 3 3 set grestore
+gsave 7 4 translate
+0 (Cmaj7) basis 2 3 set 3 2 set grestore
+gsave 9 4 translate
+0 () basis grestore
+
+%weitere akkorde:
+% gsave <xPos> <yPos> translate (btw. (0,0) ist unten links
+% <Bund> (<Name>) basis {<x> <y> set|evtl|no}* grestore
+
+0.8 1 moveto (Em=e Dsus=D4 Hb=B Bb=B Fj7=Fmaj7 F#=Fis Db=Des=Cis) show newpath
+
+showpage
+grestore

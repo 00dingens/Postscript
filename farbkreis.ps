@@ -1,0 +1,85 @@
+%!
+%%BoundingBox: 0 0 1024 768
+gsave 
+ 
+% Farbkreis frei nach Johannes Itten
+64 dup scale %Bildschirmbreite 16
+ [] 0 setdash 
+0.02 setlinewidth 
+1 setgray  
+ newpath  0 0 moveto 16 0 lineto 16 12 lineto 0 12 lineto closepath 
+fill 
+
+8 6 translate
+
+/Ri 3 def
+/Ra 5.75 def
+
+% 0 (Sektor bei 4 Uhr)
+ newpath 0 0 Ra 315 345 arc 0 0 Ri 345 315 arcn closepath 
+1 0 0.2 setrgbcolor fill 
+
+% 1 (Sektor bei 3 Uhr)
+ newpath 0 0 Ra -15 15 arc 0 0 Ri 15 -15 arcn closepath 
+1 0.4 0 setrgbcolor fill 
+
+% 2 (bei 2 Uhr)
+ newpath 0 0 Ra 15 45 arc 0 0 Ri 45 15 arcn closepath 
+1 0.6 0 setrgbcolor fill 
+
+% 3
+ newpath 0 0 Ra 45 75 arc 0 0 Ri 75 45 arcn closepath 
+1 0.8 0 setrgbcolor fill 
+
+% 4
+ newpath 0 0 Ra 75 105 arc 0 0 Ri 105 75 arcn closepath 
+1 1 0 setrgbcolor fill 
+
+% 5
+ newpath 0 0 Ra 105 135 arc 0 0 Ri 135 105 arcn closepath 
+0.5 0.85 0 setrgbcolor fill 
+
+% 6
+ newpath 0 0 Ra 135 165 arc 0 0 Ri 165 135 arcn closepath 
+0 0.7 0 setrgbcolor fill 
+
+% 7
+ newpath 0 0 Ra 165 195 arc 0 0 Ri 195 165 arcn closepath 
+0 0.55 0.7 setrgbcolor fill 
+
+% 8
+ newpath 0 0 Ra 195 225 arc 0 0 Ri 225 195 arcn closepath 
+0 0.3 1 setrgbcolor fill 
+
+% 9
+ newpath 0 0 Ra 225 255 arc 0 0 Ri 255 225 arcn closepath 
+0.05 0 0.9 setrgbcolor fill 
+
+%10
+ newpath 0 0 Ra 255 285 arc 0 0 Ri 285 255 arcn closepath 
+0.5 0 0.7 setrgbcolor fill 
+
+%11
+ newpath 0 0 Ra 285 315 arc 0 0 Ri 315 285 arcn closepath 
+0.8 0 0.6 setrgbcolor fill 
+
+% eingeschriebene Figur
+/H Ri 2 div 3 sqrt mul def
+/Hh H 2 div def
+/Riv Ri 4 div def
+newpath 0 0 moveto Hh Riv lineto 0 Ri lineto Hh neg Riv lineto closepath
+1 1 0 setrgbcolor fill
+newpath 0 0 moveto 0 Ri neg 2 div lineto H 0 rlineto Hh Riv lineto closepath
+1 0 0.2 setrgbcolor fill
+newpath 0 0 moveto Hh neg Riv lineto H neg Ri neg 2 div lineto H 0 rlineto closepath
+0 0.3 1 setrgbcolor fill 
+newpath 0 Ri moveto H Ri neg 2 div lineto 0 Ri rlineto closepath
+1 0.6 0 setrgbcolor fill 
+newpath 0 Ri moveto H neg Ri 2 div lineto 0 Ri neg rlineto closepath
+0 0.7 0 setrgbcolor fill 
+newpath H neg Ri neg 2 div moveto 0 Ri neg lineto H Ri neg 2 div lineto closepath
+0.5 0 0.7 setrgbcolor fill 
+
+showpage 
+grestore 
+

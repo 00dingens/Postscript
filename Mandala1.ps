@@ -1,0 +1,100 @@
+gsave
+72 2.54 div dup scale	%72 dpi
+10.8 13.97 translate %mitte
+
+% hilfreiche Funktionen
+/drehungen {dup 360 exch div exch} def /von {dup rotate} def
+/sw {dup dup setrgbcolor} def
+/gitter {
+0.8 sw -30 .1 30 {-30 .1 30 {1 index 0.01 0 360 arc fill} for} for 
+0.5 sw -30 .5 30 {-30 .5 30 {1 index 0.02 0 360 arc fill} for} for 
+0.2 sw -30 1  30 {-30  1 30 {1 index 0.04 0 360 arc fill} for} for 
+0   sw -30 5  30 {-30  5 30 {1 index 0.07 0 360 arc fill} for} for
+} def
+/hilfslinien4 {
+0.01 setlinewidth 0.6 sw 128 drehungen {von 10 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.6 sw  64 drehungen {von  5 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.6 sw  32 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.5 sw  16 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.4 sw   8 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+} def
+/hilfslinien6 {
+0.01 setlinewidth 0.6 sw 96 drehungen {von 10 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.6 sw 48 drehungen {von  5 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.6 sw 24 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.5 sw 12 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.4 sw  6 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+} def
+/hilfslinien7 {
+0.01 setlinewidth 0.6 sw 112 drehungen {von 10 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.6 sw  56 drehungen {von  5 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.6 sw  28 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.5 sw  14 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+0.01 setlinewidth 0.4 sw   7 drehungen {von  0 0 moveto 30 0 lineto stroke}repeat
+} def
+/kreise {
+0.01  setlinewidth 0.7 sw 0 .5 30 {0 exch 0 exch 0 360 arc stroke} for
+0.01  setlinewidth 0.5 sw 0 1  30 {0 exch 0 exch 0 360 arc stroke} for
+%0.01  setlinewidth 0.4 sw 0 5  30 {0 exch 0 exch 0 360 arc stroke} for
+} def
+
+% 3 kreise beispiel
+%0.3 setlinewidth 0 sw 0 0 3 0 360 arc stroke 0 0 4 0 360 arc stroke 0 0 5 0 360 arc stroke
+
+% stern beispiel
+%0 sw 0 0 moveto 4 drehungen {von 6 6 lineto 2 1 lineto 5 0 lineto 2 -1 lineto 6 -6 lineto} repeat closepath fill
+%1 sw 0 0 moveto 4 drehungen {von 4 4 lineto 2 1 lineto 4 0 lineto 2 -1 lineto 4 -4 lineto} repeat closepath fill
+%0 sw 0 0 moveto 4 drehungen {von 3 3 lineto 2 1 lineto 3 0 lineto 2 -1 lineto 3 -3 lineto} repeat closepath fill
+%1 sw 0 0 moveto 4 drehungen {von 2.5 2.5 lineto 2 1 lineto 2.5 0 lineto 2 -1 lineto 2.5 -2.5 lineto} repeat closepath fill
+
+% 6 Kreise in der Mitte beispiel
+%0 sw 6 drehungen {von 1 0 0.5 0 360 arc stroke} repeat
+
+% 7er mandala von innen nach aussen beispiel
+gsave 0 sw
+0.03 setlinewidth
+0 0 1 0 360 arc stroke
+0 0 2 0 360 arc stroke
+1 0 moveto 7 drehungen {von von 1 0 lineto} repeat stroke
+7 drehungen {von 
+1 0 moveto 2 0 lineto stroke
+} repeat
+ 360 14 div rotate
+7 drehungen {von 
+2 0 moveto 3 0 lineto stroke
+} repeat
+3 0 moveto 7 drehungen {von 3 0 lineto} repeat stroke
+14 drehungen {von 
+1 sw 2 0 .3 0 360 arc fill
+0 sw 2 0 .3 0 360 arc stroke
+} repeat
+0 0 3 0 360 arc stroke
+0 0 5 0 360 arc stroke
+14 drehungen {von
+3 0 3 67 120 arc stroke
+} repeat
+42 drehungen {von 
+0 sw 5.5 0 .3 0 360 arc stroke
+5.5 0 1.122 265 95 arc stroke
+6.622 0 moveto 7 0 lineto stroke
+} repeat
+0 0 7 0 360 arc stroke
+7.2 0 moveto
+49 drehungen {von
+7.8 -0.5 lineto 7.2 0 lineto
+} repeat closepath stroke
+10 0 moveto
+49 drehungen {von von von von von von von von von von %11 ecken weiter
+10 0 lineto
+} repeat closepath stroke
+0 0 10 0 360 arc stroke
+grestore
+
+%hilfslinien4
+%hilfslinien6
+%hilfslinien7
+%kreise
+%gitter
+
+showpage
+grestore

@@ -1,0 +1,156 @@
+###Programmstruktur
+/Radius 3.75 def					variable definieren und zuweisen
+/Prozedurname {Befehlsfolge} def			prozeduren definieren
+Anfangswert Inkrement Laufgrenze {Befehlsfolge} for	aktueller index immer oben auf stack!
+n {Befehlsfolge} repeat					n-mal ausgeführt
+{Befehlsfolge} loop
+Abbruchbedingung {exit} if 	Wenn die Abbruchbedingung erfüllt ist, wird der Ausgang (exit) gewählt
+###If
+A B gt {Anweisungen} if
+A B gt C D eq and {Anweisungen1} {Anweisungen2} ifelse
+
+###Arrays
+/Ra [1 1 0 0 0 1] def					Array, auch typ-gemischt. geht auch so:
+/Ra 6 array def						leeres array
+1 1 0 0 0 1 Ra astore pop 				und füllen
+Ra 4 get
+Ra 3 0.5 put
+
+###Stack
+pop	na, was denn wohl?
+clear	stack leeren
+dup	dup
+exch	swap
+2 index	2. element unter dem obersten kopieren und auf den stack (oberstes 0)
+3 copy	kopiert oberste 3 elemente
+count	höhe des stack
+pstack	stackinhalt ausgeben
+
+###Arithmetische Operationen
+add	Addition
+div	Division
+idiv	ganzzahlige Division
+mul	Multiplikation
+sub	Subtraktion
+neg	dreht Vorzeichen um
+
+###Logische Operatoren
+A B and			und
+Wert1 Wert2 eq		=
+Wert1 Wert2 ge		>=
+gt			>
+le			<=	
+lt			<	
+Wert1 Wert2 eq not
+or			oder, logische Summe	
+xor			entweder – oder	
+
+###Mathe
+atan	Arcustangens
+cos	Cosinus
+exp	allg. Exponentiation a hoch b
+ln	natürlicher Logarithmus
+log	dekadischer Logarithmus
+sin	Sinus
+sqrt	Quadratwurzel
+abs	Betrag
+ceiling	ganze Zahl >= Argument
+floor	ganze Zahl <= Argument
+mod	 Modulo, Divisionsrest
+rand	Pseudo-Zufallszahl 0 bis 2^31-1
+round	Rundung
+
+###Text
+/Helvetica findfont		Schrift wählen (Zeiger auf Schriftart auf den Stack holen)
+1.5 scalefont			Schriftgröße
+setfont				Schrift setzen
+/Helvetica 1.5 selectfont	vereint die Vorigen 3 Zeilen
+(Text) show			Text ausgeben
+/Zeichenkettenname 8 string def	Leerer String der Länge 8
+text Variable cvs		anwenden oder so
+/xyz 4 string def 1000 str cvs show	z.B.
+
+Zentriertes show selbst definieren:
+/centershow {dup stringwidth pop 2 div neg 0 rmoveto show} def
+Verwendung:
+(Zentrierter Text) centershow
+
+###Sonderzeichen
+(Wei) show /germandbls glyphshow	schreibt Weiß
+###Kombinierte Sonderzeichen
+â	 /acircumflex	ä	/adieresis	Ä	/Adieresis
+à	 /agrave	ç	/ccedilla	Ç	/Ccedilla
+é	 /eacute	É	/Eacute		ê	/ecircumflex
+ë	 /edieresis	è	/egrave		€	/Euro
+ï	 /idieresis	ô	/ocircumflex	ö	/odieresis
+Ö	 /Odieresis	ß	/germandbls	ü	/udieresis
+Ü	 /Udieresis
+###Weitere Sonderzeichen
+/copyright, /degree, /endash, /emdash, /ellipsis (Auslassungspunkte), /multiply, /periodcentered, /plusminus, /registered, /trademark
+###Schrift für direkte Verwendung von Umlauten andern (Mehr, zB Codierungstabellen im Roten Buch)
+/Helvetica findfont
+dup length dict begin
+{def} forall
+/Encoding ISOLatin1Encoding def
+currentdict
+end
+/Helvetica-ISOLatin1 exch definefont
+(Schön, daß es klappt! 20 \240) show
+(\307'est la vie! L'état, \347'est moi! Grün & Weiß) show 
+
+###Grafik
+###Pfade
+0 0 moveto	startpunkt
+1 0 lineto	etc macht pfad
+closepath	wieder zum start
+gsave		speichert Pfad
+grestore	lädt pfad
+newpath		löscht aktuellen Pfad einfachso
+(Text) true charpath clip	Nutzt Textumriss für nächsten Grafikoperationen
+(Text) false charpath stroke	Textumriss zeichnen
+[0.3 0.5] 0.1 setdash		Zeichnet gestrichelt --     ---     ---…
+[] 0 setdash			Durchgezogene linie
+0 setlinejoin			eckige ecken
+1 setlinejoin			runde ecken
+2 setlinejoin			schräge ecken
+0 setlinecap			spitzer stift
+1 setlinecap			runder stift
+2 setlinecap			schräger stift
+rotate		Dreht Koordinatensystem (Winkel in Grad)
+
+1 0 0 setrgbcolor fill		füllung
+0 0 0 setrgbcolor stroke	rand
+
+xMittelp yMittelp Radius WAnf WEnd arc	Kreisbogen
+arcn					wie oben, aber im Uhrzeigersinn
+x1 y1 x2 y2 r arct                      linie nach x1 y1, dann nach x2 y2, ecke mit radius r gerundet.
+xh1 yh1 xh2 yh2 x y curveto		Bézier-Kurve
+dxh1 dyh1 dxh2 dyh2 dx dy rcurveto	Bézier-Kurve
+DeltaX DeltaY rlineto			relativ
+DeltaX DeltaY rmoveto
+###Rechtecke
+xEckpunkt yEckpunkt Breite Hoehe rectfill	Rechteck gefüllt
+[xE1 yE1 B1 H1 xE2 yE2 B2 H2 . . .] rectfill	viele Rechtecke
+rectclip
+rectstroke
+
+### EPS Aufbau (A4)
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595 842
+%%Title: Titel des ganzen
+%%Pages: 2
+%%BeginProlog
+/pt2mmX 595 210 div def  %2,8333
+/pt2mmY 842 297 div def  %2,8350
+%%EndProlog
+
+%%Page: 1 1
+pt2mmX pt2mmY scale  %skala jetzt in mm
+1 setlinewidth       %strichbreite 1 mm
+%dummy:
+10 10 moveto 200 287 lineto stroke
+showpage
+
+%%Page: 2 2
+% bla bla
+showpage

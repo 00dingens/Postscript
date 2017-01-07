@@ -1,0 +1,1 @@
+/q {rotate} def /x {q dup 0 gt} def /f {0 1 rlineto} def /l {dup 1 sub 90 x {r} if f -90 x {l} if f 0 x {l} if -90 q f 0 x {r} if 90 q pop} def /r {dup 1 sub -90 x {l} if f 90 x {r} if f 0 x {r} if 90 q f 0 x {l} if -90 q pop} def 14 99 translate 580 dup scale 1 1 7 {dup 0.11 mul 1 1 sethsbcolor 0.2 0.5 dup scale setlinewidth 0.5 0.5 moveto r stroke} for showpage

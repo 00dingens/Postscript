@@ -1,0 +1,134 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 200 260
+%%Pages: 3
+
+/w3{30 cos}def   % 1/3 cos(30)
+/w1{w3 3 div}def % 3/3 cos(30)
+/w2{w1 2 mul}def % 2/3 cos(30)
+/wh{w3 3 div}def % 1/3 cos(30)
+/m1{w1 neg}def   %-1/3 cos(30)
+/m2{w2 neg}def   %-2/3 cos(30)
+/m3{w3 neg}def   %-3/3 cos(30)
+/mh{wh neg}def   %-1/3 cos(30)
+/l1{5 6 div}def  % 5/6
+/l2{2 3 div}def  % 2/3
+/l3{1 6 div}def  % 1/6
+/lh{1 6 div}def  % 1/3
+/j1{l1 neg}def   %-5/6
+/j2{l2 neg}def   %-2/3
+/j3{l3 neg}def   %-1/4
+/jh{lh neg}def   %-1/3
+
+%arrays mit den koordinaten der punkte
+%/xr [w1 w2 w3 w3 w2 w1 m1 m2 m3 m3 m2 m1] def
+%/yr [j1 j2 j3 l3 l2 l1 l1 l2 l3 j3 j2 j1] def
+/xa [w1 w2 w3 w3 w2 w1 m1 m2 m3 m3 m2 m1] def
+/ya [j1 j2 j3 l3 l2 l1 l1 l2 l3 j3 j2 j1] def
+/xb [ 0 wh wh wh wh  0  0 mh mh mh mh  0] def
+/yb [jh j3 j3 l3 l3 lh lh l3 l3 j3 j3 jh] def
+
+/rand{1}def
+
+/s{ %erwartet 2 nummern von 0 bis 7, verbindet die anschlüsse
+xa 1 index get rand mul ya 2 index get rand mul moveto
+xa 1 index get ya 2 index get lineto
+xb 1 index get yb 2 index get
+xb 4 index get yb 5 index get
+xa 6 index get ya 7 index get curveto
+xa 2 index get rand mul ya 3 index get rand mul lineto
+stroke pop pop
+}def
+
+%/s{ %erwartet 2 nummern von 0 bis 7, verbindet die anschlüsse
+%xa 1 index get rand mul ya 2 index get rand mul moveto
+%xa 1 index get ya 2 index get lineto
+%xb 1 index get yb 2 index get lineto
+%xb 2 index get yb 3 index get lineto
+%xa 2 index get ya 3 index get lineto %curveto
+%xa 2 index get rand mul ya 3 index get rand mul lineto
+%stroke pop pop
+%}def
+
+/r{1 0 0 setrgbcolor}def   %rot     -> punktsymmetrisch, 90°
+/g{0 .7 0 setrgbcolor}def  %grün    -> achsensymmetrisch gerade
+/y{.8 .7 0 setrgbcolor}def %gelb    -> achsensymmetrisch schräg
+/b{0 0 1 setrgbcolor}def   %blau    -> punktsymmetrisch, 180°
+/k{0 0 0 setrgbcolor}def   %schwarz -> nicht symmetrisch
+
+%einkommentieren für 'alle schwarz'
+%/r{k}def/g{k}def/b{k}def/y{k}def
+
+%/rand{.1 setlinewidth k 0 0 6 6 rectstroke .2 setlinewidth}def  %kartenrand
+%/rand{gsave 2 2 translate 4 {2 1 moveto 3 1 lineto stroke 1 2 moveto 1 3 lineto stroke 90 rotate} repeat grestore .1 setlinewidth k -1 -1 6 6 rectstroke .2 setlinewidth}def  %kartenrand
+
+%für positionen der karten
+/c{/cox cox 1 add def cox 3 eq {/coy coy 1 add def /cox 0 def}if cox 3 mul 1 add coy 3 mul 1 add gsave translate}def
+/t2{grestore}def
+
+%c zu beginn einer karte
+%#x #y s verbindet die anschlüsse #x und #y
+%t2 am ende der karte
+
+%%Page: 1 1
+/cox -1 def /coy 0 def
+.05 setlinewidth
+10 10 scale
+r c 0 1 s 2 3 s 4 5 s 6 7 s t2
+y c 0 1 s 2 3 s 4 6 s 5 7 s t2
+y c 0 1 s 2 3 s 4 7 s 5 6 s t2
+g c 0 1 s 2 4 s 3 6 s 5 7 s t2
+k c 0 1 s 2 4 s 3 7 s 5 6 s t2
+g c 0 1 s 2 5 s 3 6 s 4 7 s t2
+k c 0 1 s 2 5 s 3 7 s 4 6 s t2
+k c 0 1 s 2 6 s 3 4 s 5 7 s t2
+k c 0 1 s 2 6 s 3 5 s 4 7 s t2
+b c 0 1 s 2 6 s 3 7 s 4 5 s t2
+g c 0 1 s 2 7 s 3 4 s 5 6 s t2
+g c 0 1 s 2 7 s 3 5 s 4 6 s t2
+showpage
+
+
+%%Page: 2 2
+/cox -1 def /coy 0 def
+.05 setlinewidth
+10 10 scale
+b c 0 1 s 2 7 s 3 6 s 4 5 s t2
+b c 0 2 s 1 3 s 4 6 s 5 7 s t2
+y c 0 2 s 1 3 s 4 7 s 5 6 s t2
+y c 0 2 s 1 4 s 3 6 s 5 7 s t2
+k c 0 2 s 1 4 s 3 7 s 5 6 s t2
+k c 0 2 s 1 5 s 3 6 s 4 7 s t2
+b c 0 2 s 1 5 s 3 7 s 4 6 s t2
+y c 0 2 s 1 6 s 3 4 s 5 7 s t2
+g c 0 2 s 1 6 s 3 5 s 4 7 s t2
+g c 0 2 s 1 7 s 3 4 s 5 6 s t2
+b c 0 2 s 1 7 s 3 5 s 4 6 s t2
+b c 0 3 s 1 2 s 4 7 s 5 6 s t2
+showpage
+
+
+%%Page: 3 3
+/cox -1 def /coy 0 def
+.05 setlinewidth
+10 10 scale
+k c 0 3 s 1 4 s 2 6 s 5 7 s t2
+y c 0 3 s 1 4 s 2 7 s 5 6 s t2
+b c 0 3 s 1 5 s 2 6 s 4 7 s t2
+r c 0 3 s 1 6 s 2 5 s 4 7 s t2
+b c 0 4 s 1 2 s 3 7 s 5 6 s t2
+b c 0 4 s 1 3 s 2 6 s 5 7 s t2
+k c 0 4 s 1 3 s 2 7 s 5 6 s t2
+r c 0 4 s 1 5 s 2 6 s 3 7 s t2
+b c 0 4 s 1 5 s 2 7 s 3 6 s t2
+r c 0 5 s 1 4 s 2 7 s 3 6 s t2
+r c 0 7 s 1 2 s 3 4 s 5 6 s t2
+
+c
+r 3 3 2.0 0 360 arc fill
+g 3 3 1.5 0 360 arc fill
+y 3 3 1.0 0 360 arc fill
+b 3 3 0.7 0 360 arc fill
+k 0 1 7{0 1 7{1 index s}for}for
+1 1 1 setrgbcolor 3 3.0 0.3 0 360 arc fill
+t2
+showpage

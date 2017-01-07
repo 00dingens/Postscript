@@ -1,0 +1,88 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -130 -115 290 125
+gsave
+/l 2.5 def
+l setlinewidth
+1 setlinecap
+1 setlinejoin
+/r 20 def
+/p 7 def
+
+% usage: länge winkel xPos yPos pfeil
+/pfeil {gsave translate rotate r 0 moveto dup r sub l 2 div sub 0 lineto stroke r sub l 2 div sub 0 translate p neg dup moveto 0 0 lineto p neg p rlineto stroke grestore} def
+% usage: winkel xPos yPos pfeil
+/selbst {gsave translate rotate r 0 moveto 30 -20 30 20 5 5 rcurveto stroke gsave r 5 add 5 translate -20 rotate p 0 moveto 0 0 lineto 0 p lineto stroke grestore grestore} def
+
+%usage -% +% x y
+/ausgabe{gsave 1 setlinewidth translate 0 0 50 40 rectstroke l setlinewidth 3 25 moveto (+) show 15 25 moveto show 5 5 moveto (-) show 15 5 moveto show newpath grestore}def
+0 0 0 setrgbcolor
+
+% Ausgabe
+/Helvetica 16 selectfont
+(  5%)  (95%) -35 -70 ausgabe
+ (97%) (  3%) 227 -105 ausgabe
+ (35%)  (65%) 227 35 ausgabe
+
+% Zustandsnamen
+/Helvetica 12 selectfont
+(A) -122 -25 moveto show newpath
+(B) -22 -25 moveto show newpath
+(C) 78 -95 moveto show newpath
+(D) 178 -95 moveto show newpath
+(E) 78 45 moveto show newpath
+(F) 178 45 moveto show newpath
+
+%Übergänge
+/Helvetica 12 selectfont
+(100%) -70 2 moveto show newpath
+(96%) 20 34 moveto show newpath
+(4%) 40 -28 moveto show newpath
+(1%) 90 -24 moveto show newpath
+(99%) 130 -60 moveto show newpath
+(8%) 145 -88 moveto show newpath
+(59%) 220 -36 moveto show newpath
+(33%) 202 -5 moveto show newpath
+(21%) 145 12 moveto show newpath
+(79%) 130 80 moveto show newpath
+(15%) 140 52 moveto show newpath
+(85%) 220 104 moveto show newpath
+
+%Pfeile
+% von 0 (-100 0)
+100 0 -100 0 pfeil
+% von 1 (0 0)
+40 0 0 selbst	  % nach 1
+122 324 0 0 pfeil % nach 2
+% von 2 (100 -70)
+90 100 -70 selbst  % nach 2
+102 0 99 -63 pfeil
+% von 3 (200 -70)
+102 180 201 -77 pfeil % nach 2
+40 200 -70 selbst     % nach 3
+140 90 200 -70 pfeil  % nach 5
+% von 4 (100 70)
+173 306 100 70 pfeil  % nach 3
+102 0 99 77 pfeil     % nach 5
+% von 5 (200 70)
+102 180 201 63 pfeil  % nach 4
+40 200 70 selbst     % nach 5
+
+%Kreise
+-100   0 r 0 360 arc stroke
+   0   0 r 0 360 arc stroke
+ 100  70 r 0 360 arc stroke
+ 100 -70 r 0 360 arc stroke
+ 200  70 r 0 360 arc stroke
+ 200 -70 r 0 360 arc stroke
+
+%Beschriftung
+% Zustände
+-100 r 0.7 mul moveto -100 r -0.7 mul lineto stroke
+100  70 r 0.7 mul add moveto 100  70 r -0.7 mul add lineto stroke
+100 -70 r 0.7 mul add moveto 100 -70 r -0.7 mul add lineto stroke
+ -7   7 4 0 360 arc fill  7   7 4 0 360 arc fill 0     -2 8 200 340 arc stroke
+207  77 4 0 360 arc fill 193  77 4 0 360 arc fill 193   63 moveto 14 0 rlineto stroke
+207 -63 4 0 360 arc fill 193 -63 4 0 360 arc fill 200 -80 8 20 160 arc stroke
+
+showpage 
+grestore

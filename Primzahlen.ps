@@ -1,0 +1,21 @@
+gsave
+72 2.54 div dup scale	%72 dpi
+%10.5 14.85 translate	%bildschrimmitte
+%0.01 setlinewidth
+/Helvetica 1 selectfont
+/str 5 string def
+/max 1000 def
+
+1 26 moveto
+( 2) show
+3 2 max {
+/prim true def
+2 1 2 index 1 sub {1 index exch mod
+0 eq {/prim false def} if
+} for
+prim{( ) show str cvs show
+currentpoint pop 20 ge {currentpoint 1 sub exch pop 1 exch moveto} if
+} if
+} for
+showpage
+grestore

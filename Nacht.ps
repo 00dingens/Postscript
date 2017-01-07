@@ -1,0 +1,14 @@
+gsave
+/r{rand 2 31 exp div mul}def
+/c{setrgbcolor}def
+0 .5 800{dup 4000 div .2 exch sub 0 exch 0 exch c 0 exch moveto 800 0 rlineto stroke}for
+1000{.8 .8 .5 r .5 add c 800 r 800 r 1 r 0 360 arc fill}repeat
+/h{0 0 0 c 0 0 /x 10 r 3 add def /y 10 r 3 add def x y rectfill 
+-2 y moveto x 2 div y 1.5 mul lineto x 2 add y lineto closepath fill}def
+0 0 0 c 400 0 moveto 2 80 rlineto 2 -80 rlineto closepath fill
+402 50 2 0 360 arc fill
+100{gsave 800 r 0 translate h 2 r 1 lt {.5 .5 0 c x .5 mul y .5 mul x .3 mul y .3 mul rectfill} if grestore}repeat
+50 550 translate
+30 -.1 0{dup dup 30 div 1 exch sub dup dup dup c 2 div 0 360 arc fill}for
+showpage
+grestore

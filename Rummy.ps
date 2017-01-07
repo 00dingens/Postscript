@@ -1,0 +1,51 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595.28 841.89 
+%%Title: Rummy
+%%Pages: 1
+%%Page: 1 1
+
+/karte{
+dup
+}def
+% dup stringwidth pop 2 div neg 0 rmoveto show
+
+/color {
+dup -1 eq {0 0 0 0.1 setcmykcolor} if
+dup 0 eq {1 0 0 0 setcmykcolor} if
+dup 1 eq {0 1 0 0 setcmykcolor} if
+dup 2 eq {0 0 1 0 setcmykcolor} if
+dup 3 eq {0 0 0 1 setcmykcolor} if
+pop
+} def
+
+% los gehts  %%%%
+
+595.28 14.02 div 841.89 16.02 div scale
+0.01 0.01 translate %kommazahlen für linien am rand
+/Helvetica 0.8 selectfont
+
+/str 2 string def
+
+%1 1 moveto
+%22 str cvs show
+
+0 1 7 {
+0 1 13 {
+gsave
+dup 0.5 add 2 index 2 mul 1 add translate
+0.02 setlinewidth -1 color -0.5 -1 1 2 rectstroke
+1 index 2 idiv color
+dup 0 eq {
+-90 rotate 0.65 1 scale (JOKER) dup stringwidth pop -2 div -0.3 moveto show
+} {
+0.06 setlinewidth -0.4 0 moveto 0.4 0 lineto stroke
+2{dup str cvs
+dup stringwidth pop -2 div 0.25 moveto
+show 180 rotate}repeat
+} ifelse
+grestore
+pop
+} for
+pop
+} for
+showpage

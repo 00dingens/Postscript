@@ -1,0 +1,49 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: -6 -6 396 396
+%%Title: Labyrinth
+10 dup scale
+.8 setlinewidth
+1 setlinecap
+/w 40 def
+/h 40 def
+
+/r{rand exch mod}def
+
+%leeres feld
+/A w h mul array def
+1 w h mul{0}repeat A astore pop
+0 1 w 1 sub {A 1 index 1 put A exch h 1 sub w mul add 2 put}for
+1 1 w 2 sub {A 1 index w mul 3 put A exch w mul h add 1 sub 4 put}for
+A h 2 idiv w mul w 2 idiv add 5 put
+0 0 moveto 0 w 1 sub lineto stroke
+h 1 sub 0 moveto 0 w 1 sub rlineto stroke
+1 0 moveto h 2 sub 0 lineto stroke
+1 w 1 sub moveto h 3 sub 0 rlineto stroke
+
+200000 {
+%position
+/x w h mul r def
+A x get 0 eq not {
+
+%richtung lruo
+/rd 4 r def
+/rx 0 def /ry 0 def
+rd 0 eq {x w mod 0 gt{/rx -1 def}if} if
+rd 1 eq {x w mod w 1 sub lt{/rx 1 def}if} if
+rd 2 eq {x w idiv 0 gt{/ry -1 def}if} if
+rd 3 eq {x w idiv w 1 sub lt{/ry 1 def}if} if
+
+%neue position
+/xn x rx add ry w mul add def
+
+A xn get 0 eq {
+%wände farbig
+A x get 5 div 1 1 sethsbcolor
+x w idiv x w mod moveto ry rx rlineto stroke
+A xn A x get put
+}if}if
+
+}repeat 
+
+
+showpage

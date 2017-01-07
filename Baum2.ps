@@ -1,0 +1,48 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 595 842
+%%Title: Tag
+%1.2 1.2 scale
+gsave
+
+/r1 {rand 2 32 exp div 0.75 add} def
+/r2 {rand 2 33 exp div 0.8375 add} def
+
+/d {/w2 exch def /w1 exch def /s2 exch def /s1 exch def /l exch def} def
+/bx {
+dup 20 div neg 1 add 0.3 exch 1 exch sethsbcolor
+0 0 moveto 0 l lineto stroke
+dup 1 sub
+dup 0 gt {gsave 
+0 l translate w1 r1 mul rotate s1 r2 mul dup scale bx 
+0 0 translate w2 r1 mul rotate s2 r2 mul dup scale bx 
+grestore} if
+pop
+} def
+
+0.7 0.7 1 setrgbcolor
+0 0 800 850 rectfill
+.3 .75 .3 setrgbcolor
+0 0 800 50 rectfill
+
+gsave
+100 700 translate
+90 -0.5 1 {
+50 rotate 
+dup 300 div 1 exch sub dup 1 setrgbcolor 
+dup 0 exch 0 360 arc 
+fill} for
+grestore
+
+1 setlinecap
+20 20 scale
+0.3 setlinewidth
+5 2.5 translate
+1.1 0.8 1.1 20 -38 d 12 bx
+7 0 translate
+1 0.8 1 30 -60 d 12 bx
+7 0 translate
+2 0.8 1 15 -24 d 12 bx
+7 0 translate
+2 0.6 1.5 35 -40 d 12 bx
+showpage
+grestore

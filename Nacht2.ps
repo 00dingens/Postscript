@@ -1,0 +1,29 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 595 842
+%%Title: Nacht
+1.2 1.2 scale
+
+gsave
+/r{rand 2 31 exp div mul}def
+/c{setrgbcolor}def
+
+%hintergrund
+0 .5 800{dup 4000 div .15 exch sub 0 exch 0 exch c 0 exch moveto 800 0 rlineto stroke}for
+
+%sterne
+100{.8 .8 .5 r .5 add c 800 r 800 r 1 r 0 360 arc fill}repeat
+
+%mond
+.9 .9 .85 c
+400 600 translate
+0 0 20 0 360 arc fill
+
+%mondkreise
+200 {
+.8 .8 .76 .1 r add c
+2 r .1 add setlinewidth
+0 0 20 0 360 arc clip newpath
+40 r 20 sub 40 r 20 sub 3 r 0 360 arc stroke} repeat
+
+showpage
+grestore

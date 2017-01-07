@@ -1,0 +1,318 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595 842
+%%Title: Akkorde von Rafael
+%%Pages: 3
+%%BeginProlog
+
+/sf 38.5 def	%zahl kleiner für mehr platz.  
+
+/grid {
+0.4 0.2 1.6 {0 exch moveto 1.5 0 rlineto stroke} for
+0 0.4 1.2 {0.4 moveto 0 1 rlineto stroke} for
+} def
+/name {
+0.3 1.5 moveto show newpath
+} def
+/nameklein {
+/Helvetica 0.25 selectfont
+-0.3 1.6 moveto show newpath
+/Helvetica fontsize selectfont
+} def
+/bundnummer [( ) (I) (II) (III) (IV) (V) (VI) (VII) (VIII) (IX) (X) (XI) (XII)] def
+
+/bund {
+dup 0 eq {-0.05 0.4 moveto 0 1 rlineto stroke}
+{
+0.4 0.2 1.6 {-0.3 exch moveto 0.3 0 rlineto stroke} for
+gsave 0.1 setlinewidth -0.2 0.4 moveto 0 1 rlineto stroke grestore} ifelse
+-0.3 0 moveto bundnummer exch get show newpath
+} def
+
+/bundx {
+dup 0 eq {-0.05 0.4 moveto 0 1 rlineto stroke}
+{
+0.4 0.2 1.6 {-0.1 exch moveto 0.1 0 rlineto stroke} for
+} ifelse
+-0.3 0 moveto bundnummer exch get show newpath
+} def
+
+/set {
+exch 0.4 mul 0.2 sub exch 0.2 mul 0.2 add
+0.075 0 360 arc fill 
+} def
+
+/no {
+exch 0.4 mul 0.2 sub exch 0.2 mul 0.2 add
+1 index 0.06 sub 1 index 0.06 sub moveto 0.12 0.12 rlineto stroke
+1 index 0.06 sub 1 index 0.06 add moveto 0.12 -0.12 rlineto stroke
+} def
+
+/evtl {
+exch 0.4 mul 0.2 sub exch 0.2 mul 0.2 add
+1 index 1 index
+1 index 1 index
+0.06 0 360 arc fill 
+0.1 -50 50 arc stroke
+0.1 130 230 arc stroke
+} def
+
+/basis {
+grid name bund
+} def
+
+%%EndProlog
+
+%%Page: 1 1
+sf dup scale
+0.02 setlinewidth
+1 setlinejoin
+1 setlinecap
+/fontsize 0.45 def
+/Helvetica fontsize selectfont
+
+1.2 20.3 moveto (Akkorde in sinnvoller Lernreihenfolge von Rafael) show newpath
+
+gsave  1 18 translate
+0 (E) basis 1.9 2 set 2.1 3 set 1 4 set grestore
+gsave  3 18 translate
+0 (A) basis 1.8 3 set 2 4 set 2.2 5 set grestore
+gsave  5 18 translate
+0 (D) basis 2.1 4 set 3 5 set 1.9 6 set 2 1 no grestore
+gsave  7 18 translate
+0 (G) basis 2.8 1 set 2 2 set 3.2 6 set 3 5 evtl grestore
+gsave  9 18 translate
+0 (C) basis 1 5 set 2 3 set 3.1 2 set 2.9 1 evtl grestore
+gsave 11 18 translate
+0 (e) basis 1.9 2 set 2.1 3 set grestore
+gsave 13 18 translate
+0 (a) basis 1.9 3 set 2.1 4 set 1 5 set grestore
+
+gsave  1 16 translate
+0 (d) basis 2 4 set 3 5 set 1 6 set 1 1 no grestore
+gsave  3 16 translate
+0 (H7) basis 1 3 set 1.8 2 set 2 4 set 2.2 6 set 2 1 no grestore
+gsave  5 16 translate
+0 (Fmaj7) basis 1 5 set 2 4 set 3 3 set grestore
+gsave  7 16 translate
+0 (Cmaj7) basis 2 3 set 3 2 set grestore
+gsave  9 16 translate
+0 (e7) basis 1.9 2 set 2.1 3 evtl 3 5 set grestore
+gsave 11 16 translate
+0 (E7) basis 1.9 2 set 2.1 3 evtl 1 4 set 3 5 set grestore
+gsave 13 16 translate
+0 (E4) basis 1.8 2 evtl 2 3 set 2.2 4 set grestore
+
+gsave  1 14 translate
+0 (A7) basis 1.8 3 set 2 4 evtl 2.2 5 set 3 6 set grestore
+gsave  3 14 translate
+0 (A4) basis 1.9 3 evtl 2.1 4 set 3 5 set grestore
+gsave  5 14 translate
+0 (a7) basis 1.9 3 set 1 5 set 3 6 evtl grestore
+gsave  7 14 translate
+0 (D7) basis 1.9 4 set 1 5 set 2.1 6 set 2 1 no grestore
+gsave  9 14 translate
+0 (D4) basis 2 4 evtl 2.9 5 set 3.1 6 set 2 1 no grestore
+gsave 11 14 translate
+0 (Dmaj7) basis 1.8 4 set 2 5 set 2.2 6 set 2 1 no grestore
+gsave 13 14 translate
+0 (C7) basis 1 5 set 2 3 set 3.1 4 set 2.9 2 set grestore
+
+gsave  1 12 translate
+2 (h) basis 1.9 3 set 2.1 4 set 1 5 set grestore
+gsave  3 12 translate
+2 (fis) basis 1.9 2 set 2.1 3 set grestore
+gsave  5 12 translate
+1 (F) basis 1.9 2 set 2.1 3 set 1 4 set grestore
+gsave  7 12 translate
+4 (cis7) basis 1 5 set 2 3 set grestore
+gsave  9 12 translate
+1 (B) basis 1.8 3 set 2 4 set 2.2 5 set grestore
+gsave 11 12 translate
+3 (g7) basis 1.9 2 set 2.1 3 evtl 3 5 set grestore
+gsave 13 12 translate
+2 (H2) basis 1.8 3 set 2 4 set grestore
+
+gsave  1 10 translate
+0 (G) basis 2 2 set 3 1 set 0.5 dup dup setrgbcolor 2.9 5 set 3.1 6 set 0 0 0 setrgbcolor grestore
+gsave  3 10 translate
+0 (C2) basis 2 3 set 3 2 set 0.5 dup dup setrgbcolor 2.9 5 set 3.1 6 set 0 0 0 setrgbcolor grestore
+gsave  5 10 translate
+0 (e7) basis 1.9 2 set 2.1 3 set 0.5 dup dup setrgbcolor 2.9 5 set 3.1 6 set 0 0 0 setrgbcolor grestore
+gsave  7 10 translate
+0 (D4) basis 1.9 4 set 2.1 6 set 0.5 dup dup setrgbcolor 2.9 5 set 3.1 6 evtl 0 0 0 setrgbcolor grestore
+gsave  9 10 translate
+0 (A4/7) basis 1.9 3 set 2.1 4 evtl 0.5 dup dup setrgbcolor 2.9 5 set 3.1 6 set 0 0 0 setrgbcolor grestore
+gsave 11 10 translate
+0 (F6/2) basis 3 1 not 2 4 set 2.8 3 set 0.5 dup dup setrgbcolor 3 5 set 3.2 6 set 0 0 0 setrgbcolor grestore
+gsave 13 10 translate
+0 () basis  0.5 dup dup setrgbcolor 3 5 set 3.2 6 set 0 0 0 setrgbcolor grestore
+
+gsave  1  8 translate
+4 (D) grid name bundx 1 6 set 3.1 5 set 2.9 4 set grestore
+gsave  3  8 translate
+2 (C/D) grid name bundx 1 6 set 3.1 5 set 2.9 4 set grestore
+gsave  5  8 translate
+4 (A) grid name bundx 1 5 set 2 4 set 3 3 set grestore
+gsave  7  8 translate
+4 (G6/A) grid name bundx 1 5 set 2 4 set 3 3 set grestore
+gsave  9  8 translate
+5 (A2) grid name bundx 1.9 2 set 2.1 3 set 1 4 set grestore
+gsave 11  8 translate
+7 (H4) grid name bundx 1.9 2 set 2.1 3 set 1 4 set grestore
+gsave 13  8 translate
+2 (D2/4) grid name bundx 1 5 set 2 3 set 3.1 2 set 2.9 1 evtl grestore
+
+gsave  1  6 translate
+2 (Fis7) basis 2 2 set 1 4 set grestore
+gsave  3  6 translate
+0 (D6) basis 1.9 4 set 2.1 6 set 2 1 no grestore
+gsave  5  6 translate
+0 (Gmaj7) basis 1.9 6 set 2.1 2 set 3 1 set grestore
+gsave  7  6 translate
+0 (G7) basis 1 6 set 2 2 set 3 1 set grestore
+gsave  9  6 translate
+3 (G7) basis 2 2 set 1 4 set grestore
+gsave 11  6 translate
+0 (C2) basis 1 5 set 3 2 set grestore
+gsave 13  6 translate
+0 (C2) basis 3 5 set 2 3 set 3 2 set grestore
+
+gsave  1  4 translate
+0 (Cis0=E0=G0=B0) grid nameklein bund 1 2 set 2 3 set 2 5 set grestore
+gsave 3.5 4 translate
+1 (D0=F0=Gis0=H0) grid nameklein bund 1 2 set 2 3 set 2 5 set 
+5 3.5 set 5.5 3.5 set 6 3.5 set grestore
+gsave  7  4 translate
+0 (D4/7) basis 1 5 set 2 4 set 3 6 set grestore
+gsave  9  4 translate
+0 (d7) basis 1 1 no 0.9 6 set 1.1 5 set 2 4 set grestore
+gsave 11  4 translate
+0 (Amaj7) basis 1 4 set 1.9 3 set 2.1 5 set grestore
+gsave 13  4 translate
+0 (Emaj7) basis 0.9 4 set 1.1 3 set 1.9 2 set 2.1 5 evtl grestore
+
+gsave  1  2 translate
+0 (H4) basis 2 2 set 3.9 3 set 4.1 4 set grestore
+gsave  3  2 translate
+0 (G4) basis 2.8 1 set 2 2 set 3.2 6 set 1 5 set grestore
+gsave  5  2 translate
+0 (H4/7) basis 3.8 3 set 4 4 set 4.2 5 set grestore
+
+7 2 13 {gsave 2 translate 0 () basis grestore} for
+
+
+%weitere akkorde:
+% gsave <xPos> <yPos> translate (btw. (0,0) ist unten links
+% <Bund> (<Name>) basis {<x> <y> set|evtl|no}* grestore
+
+0.8 1 moveto (Em=e  Dsus=D4  Hb=B  Bb=B  Fj7=Fmaj7  F#=Fis  Db=Des=Cis) show newpath
+
+14.7 19.5 translate -90 rotate 0.5 0.5 0.5 setrgbcolor
+0 0 moveto (Basis) show 
+1.9 0 moveto (Fortgeschrittene) show
+6 0 moveto (Barre) show
+8 0 moveto (Easy) show
+10 0 moveto (Frei) show
+12.5 0 moveto (Weitere) show
+16 0 moveto (Eigene) show
+
+newpath
+showpage
+
+%-----------------------------------------------
+%%Page: 2 2
+sf dup scale
+0.02 setlinewidth
+1 setlinejoin
+1 setlinecap
+/fontsize 0.45 def
+/Helvetica fontsize selectfont
+
+2 2 18 { 
+1 2 13 {
+gsave 1 index translate grid grestore
+} for
+pop
+} for
+showpage
+
+%-----------------------------------------------
+%%Page: 3 3
+72 2.54 div dup scale	%72 dpi
+0.03 setlinewidth
+
+/ton [( C ) (Cis) ( D ) (Dis) ( E ) ( F ) (Fis) ( G ) (Gis) ( A ) ( B ) ( H )] def
+/nummer [(1) (+) (2) (m) (D) (4) (5-) (5) (5+) (6) (7) (j7)] def
+/qdur [(C) (G) (D) (A) (E) (H) (Fis) (Cis) (Gis) (Dis) (B) (F)] def
+/qmoll [(a) (e) (h) (fis) (cis) (gis) (dis) (b) (f) (c) (g) (d)] def
+/ad [0 5 10 3 7 0] def
+/Helvetica 0.5 selectfont
+
+%oberes gitter malen
+-90 rotate
+0 0 0.5 sethsbcolor
+-25 16 translate
+0.15 0.8 4.15 {		%saiten
+-0.5 1 index moveto 23.9 exch lineto stroke
+} for
+-0.3 1 23.7 {	%bünde
+dup 0.15 moveto dup 4.15 lineto stroke
+} for 
+
+%oberes gitter beschriften
+0 0 0 setrgbcolor
+0 1 5 {		%saiten
+0 1 23 {	%bünde
+dup 2 index 0.8 mul moveto 
+1 index ad exch get add 12 mod nummer exch get show newpath
+} for
+pop
+} for
+0 1 23 {
+dup 0.4 add -1 moveto
+28 exch sub 12 mod ton exch get show newpath
+} for
+
+%mittleres gitter malen
+0 0 0.5 sethsbcolor
+-1 -8 translate
+0.15 0.8 4.15 {		%saiten
+0.7 1 index moveto 13.9 exch lineto stroke
+} for
+0.7 1 13.7 {	%bünde
+dup 0.15 moveto dup 4.15 lineto stroke
+} for 
+0.6 0.15 moveto 0 4 rlineto stroke
+
+%mittleres gitter beschriften
+0 0 0 setrgbcolor
+0 1 5 {		%saiten
+0 1 13 {	%bünde
+dup 0.2 sub 2 index 0.8 mul moveto 
+1 index ad exch get add 4 add 12 mod ton exch get show newpath
+} for
+pop
+} for
+%punkte unter bünde
+3.15 -0.5 0.1 0 360 arc fill
+5.15 -0.5 0.1 0 360 arc fill
+7.15 -0.5 0.1 0 360 arc fill
+9.15 -0.5 0.1 0 360 arc fill
+12.15 -0.35 0.1 0 360 arc fill
+12.15 -0.65 0.1 0 360 arc fill
+20 0 translate
+
+%quintenzirkel
+0 1 11 {
+dup
+0 3 moveto
+%ton exch get show
+qdur exch get dup stringwidth pop 2 div neg 0 rmoveto show newpath
+0 2 moveto
+qmoll exch get dup stringwidth pop 2 div neg 0 rmoveto show newpath
+0 2.9 moveto 0 2.4 lineto stroke
+0.4 3.17 moveto 1.2 2.95 lineto stroke
+0.4 2.17 moveto 0.72 2.08 lineto stroke
+-30 rotate
+} for
+showpage

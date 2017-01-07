@@ -1,0 +1,40 @@
+300 700 translate
+%/fac{3{1 exch}repeat{mul}for}def
+/Helvetica 1 selectfont
+/str 5 string def
+0 0 1 0 360 arc fill
+
+% für Z2
+/r [.7 0] def /g [.7 0] def /b [.7 0] def /z 2 def
+
+% für Z3
+/r [0 1 0] def /g [0 0 1] def /b [0 0 0] def /z 3 def
+
+0 1 27 {
+/X 1 def
+0 1 2 index {
+
+dup 0 gt {%zahl berechnen
+ X 2 index 2 index sub 1 add mul
+ 1 index idiv
+ /X exch def
+} if
+
+%farbe
+r X z mod get
+g X z mod get
+b X z mod get
+setrgbcolor
+
+%pos bestimmen
+dup 2 mul 2 index sub 2 mul 2 index 3 mul neg
+
+1 0 360 arc fill		%kreise
+%moveto X z mod str cvs show	%text
+
+
+pop
+} for
+pop
+} for
+showpage

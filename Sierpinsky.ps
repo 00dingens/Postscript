@@ -1,0 +1,46 @@
+gsave
+72 2.54 div dup scale	%72 dpi
+10.5 14.85 translate	%bildschrimmitte
+0.01 setlinewidth
+/Size 5 def
+
+%tiefe
+8
+%startecken
+0 Size  %Obere ecke
+Size 120 sin mul Size 120 cos mul
+Size 240 sin mul Size 240 cos mul
+
+/malen {moveto lineto lineto closepath stroke} def
+
+/teile {
+6 index 0 eq {malen} {
+6 index 1 sub
+6 index 6 index
+6 index 9 index add 2 div 6 index 9 index add 2 div
+6 index 11 index add 2 div 6 index 11 index add 2 div
+teile
+2 index 7 index add 2 div 2 index 7 index add 2 div
+4 index 7 index add 2 div 4 index 7 index add 2 div
+6 index 6 index
+teile
+4 index 7 index add 2 div 4 index 7 index add 2 div
+6 index 6 index
+6 index 9 index add 2 div 6 index 9 index add 2 div
+teile
+7 {pop} repeat
+} ifelse
+
+} def
+
+teile
+
+%für debug
+1 0 0 setrgbcolor
+0 Size  %Obere ecke
+Size 120 sin mul Size 120 cos mul
+Size 240 sin mul Size 240 cos mul
+%malen
+
+showpage
+grestore

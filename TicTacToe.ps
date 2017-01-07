@@ -1,0 +1,26 @@
+gsave
+%größe 612 x 792
+306 396 translate
+200 200 scale
+0.02 setlinewidth
+1 setlinecap
+/r{1 0 0 setrgbcolor}def %rot
+/s{0 0 0 setrgbcolor}def %schwarz
+/gitter{1 1 2{dup 0 moveto 0 3 rlineto stroke 0 exch moveto 3 0 rlineto stroke}for}def %gitter im feld
+/box{-1.47 -1.47 2.94 2.94 rectstroke}def %kasten um feld
+/x{t -1.4 -1.4 moveto 1.4 1.4 lineto stroke -1.4 1.4 moveto 1.4 -1.4 lineto stroke e}def %X malen
+/o{t 0 0 1.4 0 360 arc stroke e}def %O malen
+/t{gsave translate .33 .33 scale}def %translate
+/e{grestore}def % ende: eine ebene höher
+
+/p{dup 3 mod 1 sub exch 3 idiv 1 sub neg}def %position
+0 p r x s
+0 1 t
+ -1  1 x 
+  0  1 o
+  1  1 t
+ 
+
+
+showpage
+grestore
