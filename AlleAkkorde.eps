@@ -1,0 +1,200 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 0 0 595 842
+%%Title: Alle Akkorde - von Rafael
+%%BeginProlog
+
+% Hier kannst du deine eigene Stimmung eingeben.
+% 0=E 1=F 2=Fis 3=G 4=Gis 5=A 6=B 7=H 8=C 9=Cis 10=D 11=Dis
+%/stimmung [5 10 2 7] def         %Ukulele D (A D Fis H)
+%/stimmung [3 8 0 5] def          %Ukulele C (G C E A)
+%/stimmung [10 5 10 3 7 0] def    %Gitarre-Drop-D (D A D G H E)
+/stimmung [0 5 10 3 7 0] def     %Gitarre (E A D G H E)
+%/stimmung [0 5 10 3] def         %4-Saiten-Bass (E A D G)
+%/stimmung [0 1 2 3 4 5] def      %Test (E F Fis G Gis A)
+
+% Texte
+/ton [( C ) (Cis) ( D ) (Dis) ( E ) ( F ) (Fis) ( G ) (Gis) ( A ) ( B ) ( H )] def
+/nummer [(1) (+) (2) (m) (D) (4) (5-) (5) (5+) (6) (7) (j7)] def
+/qdur [(C) (G) (D) (A) (E) (H) (Fis) (Cis) (Gis) (Dis) (B) (F)] def
+/qmoll [(a) (e) (h) (fis) (cis) (gis) (dis) (b) (f) (c) (g) (d)] def
+
+% für die Grifftabelle:
+/buende 6 def  % anzahl der bünde die angezeigt werden. (sollte 5 sein.)
+/punktgroesse 0.06 def
+
+
+%%%% Ab hier nur dann Dinge ändern, wenn du weißt was du tust %%%
+
+/saitenzahl stimmung length def
+
+%Skalierungsfaktor: zahl kleiner für mehr platz.
+/sf 60 def
+
+% für Grifftabelle
+/bundabstand 1.2 buende 1 sub div def
+/saitenabstand 0.6 saitenzahl 1 sub div def
+
+% Gitter für Griff: Größe 1.6x0.6
+/grid {
+gsave translate
+0  saitenabstand  .6 {0 exch moveto 1.5 0 rlineto stroke} for
+0 bundabstand 1.2 {0 moveto 0 .6 rlineto stroke} for
+-0.05 0 moveto 0 .6 rlineto stroke
+} def
+
+% Ein Punkt
+/set {newpath exch bundabstand mul bundabstand 2 div sub exch saitenabstand mul saitenabstand sub punktgroesse 0 360 arc fill} def
+% RGB Farben für Punkte
+/set1 {0 0 0 setrgbcolor set}def
+/set5 {0 0 .1 setrgbcolor set}def
+/setD {.1 0 0 setrgbcolor set}def
+/setm {.1 0 0 setrgbcolor set}def
+/set7 {.3 .3 1 setrgbcolor set}def
+/setj7 {.8 .3 1 setrgbcolor set}def
+/set6 {.3 .8 .8 setrgbcolor set}def
+/set4 {1 .3 .3 setrgbcolor set}def
+/set2 {0 .8 0 setrgbcolor set}def
+
+
+%%EndProlog
+
+%%Page: 1 1
+gsave
+50 dup scale
+0.02 setlinewidth 1 setlinejoin 1 setlinecap
+/fontsize 0.45 def
+/Helvetica fontsize selectfont
+
+
+.5 3 translate
+
+% Dur-Griffe
+2 1 13 {
+/p exch def   %position im Quintenzirkel
+1 p grid
+1 1 saitenzahl { 0 1 buende {
+dup .3 mul 2 index .2 mul moveto
+dup stimmung 3 index 1 sub get add
+2 add
+p 7 mul add 12 mod /nu exch def %nu
+%dup nummer exch get show
+
+nu 1 eq {dup 2 index set1} if
+nu 3 eq {dup 2 index set2} if
+%nu 4 eq {dup 2 index setm} if
+nu 5 eq {dup 2 index setD} if
+nu 6 eq {dup 2 index set4} if
+nu 8 eq {dup 2 index set5} if
+nu 10 eq {dup 2 index set6} if
+nu 11 eq {dup 2 index set7} if
+nu 0 eq {dup 2 index setj7} if
+
+pop}for pop}for
+grestore
+.1 p .1 add moveto qdur 21 p sub 12 mod get show
+}for
+
+% Moll-Griffe
+2 1 13 {
+/p exch def
+3 p grid
+1 1 saitenzahl { 0 1 buende {
+dup .3 mul 2 index .2 mul moveto
+dup stimmung 3 index 1 sub get add
+5 add
+p 7 mul add 12 mod /nu exch def %nu
+%nummer exch get show
+
+nu 1 eq {dup 2 index set1} if
+nu 3 eq {dup 2 index set2} if
+nu 4 eq {dup 2 index setm} if
+%nu 5 eq {dup 2 index setD} if
+nu 6 eq {dup 2 index set4} if
+nu 8 eq {dup 2 index set5} if
+nu 10 eq {dup 2 index set6} if
+nu 11 eq {dup 2 index set7} if
+nu 0 eq {dup 2 index setj7} if
+
+pop}for pop}for
+grestore
+4.7 p .1 add moveto qmoll 21 p sub 12 mod get show
+}for
+
+
+newpath
+grestore
+
+72 2.54 div dup scale	%72 dpi
+0.03 setlinewidth
+/Helvetica 0.5 selectfont
+
+
+%oberes gitter malen
+-90 rotate
+0 0 0.5 sethsbcolor
+-28 17 translate
+/saitenabst 0.6 def
+0.15 saitenabst saitenabst saitenzahl 1 sub mul 0.15 add {		%saiten
+-.5 1 index moveto 26.9 exch lineto stroke
+} for
+-.3 1 26.7 {	%bünde
+dup 0.15 moveto dup  saitenabst saitenzahl 1 sub mul 0.15 add  lineto stroke
+} for
+
+%oberes gitter beschriften
+0 0 0 setrgbcolor
+0 1 saitenzahl 1 sub {		%saiten
+0 1 26 {	%bünde
+dup 2 index saitenabst mul moveto
+1 index stimmung exch get add 12 mod nummer exch get show newpath
+} for
+pop
+} for
+0 1 26 {
+dup 0.4 add saitenabst neg moveto
+28 exch sub 12 mod ton exch get show newpath
+} for
+
+
+%mittleres gitter malen
+0 0 0.5 sethsbcolor
+1 -5 translate
+0.15 saitenabst saitenabst saitenzahl 1 sub mul 0.15 add {		%saiten
+0.7 1 index moveto 12.9 exch lineto stroke
+} for
+0.7 1 12.7 {	%bünde
+dup 0.15 moveto dup saitenabst saitenzahl 1 sub mul 0.15 add lineto stroke
+} for
+0.6 0.15 moveto 0 saitenabst saitenzahl 1 sub mul rlineto stroke
+
+%mittleres gitter beschriften
+0 0 0 setrgbcolor
+0 1 saitenzahl 1 sub {		%saiten
+0 1 12 {	%bünde
+dup 0.2 sub 2 index saitenabst mul moveto
+1 index stimmung exch get add 4 add 12 mod ton exch get show newpath
+} for
+pop
+} for
+%punkte unter bünde
+5.15 -0.5 0.1 0 360 arc fill
+7.15 -0.5 0.1 0 360 arc fill
+10.15 -0.5 0.1 0 360 arc fill
+22 -2 translate
+
+
+%quintenzirkel
+0 1 11 {
+dup
+0 3 moveto
+%ton exch get show
+qdur exch get dup stringwidth pop 2 div neg 0 rmoveto show newpath
+0 2 moveto
+qmoll exch get dup stringwidth pop 2 div neg 0 rmoveto show newpath
+0 2.9 moveto 0 2.4 lineto stroke
+0.4 3.17 moveto 1.2 2.95 lineto stroke
+0.4 2.17 moveto 0.72 2.08 lineto stroke
+-30 rotate
+} for
+%90 rotate
+showpage
